@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora Digital y Repositorio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="carousel-arrow left" id="prevBtn" onclick="navigateCarousel(-1)" aria-label="Anterior">‹</button>
+    <button class="carousel-arrow right" id="nextBtn" onclick="navigateCarousel(1)" aria-label="Siguiente">›</button>
+
+    <header>
+        <h1>Unidad Educativa Fiscal Réplica Vicente Rocafuerte</h1>
+        <p>Proyectos de la feria tecnológica</p>
+    </header>
+
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'introduccion', 0)">Introducción</button>
+            <button class="tab-button" onclick="openTab(event, 'objetivo', 1)">Objetivo</button>
+            <button class="tab-button" onclick="openTab(event, 'desarrollo', 2)">Desarrollo</button>
+            <button class="tab-button" onclick="openTab(event, 'resultados', 3)">Resultados</button>
+            <button class="tab-button" onclick="openTab(event, 'conclusion', 4)">Conclusión</button>
+        </div>
+
+        <div id="introduccion" class="tab-content active">
+            <h2>Introducción</h2>
+            
+            <!-- Pestañas de cursos -->
+            <div class="course-tabs">
+                <button class="course-tab-button active" onclick="openCourseTab(event, 'introduccion-3a')">3ro A</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'introduccion-3b')">3ro B</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'introduccion-3c')">3ro C</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'introduccion-3d')">3ro D</button>
+            </div>
+
+            <!-- Contenido por curso -->
+            <div id="introduccion-3a" class="course-content active">
+                <h3>Curso 3ro A</h3>
+                <p>Contenido de introducción para 3ro A.</p>
+            </div>
+
+            <div id="introduccion-3b" class="course-content">
+                <h3>Curso 3ro B</h3>
+                <p>Contenido de introducción para 3ro B.</p>
+            </div>
+
+            <div id="introduccion-3c" class="course-content">
+                <h3>Curso 3ro C - Brazo Robótico MeArm</h3>
+                <img src="3roC-1.jpeg" alt="" style="height:300px; margin: 20px">
+                <p>En la era de la automatización y la robótica, el equipo de 3ro C presenta un proyecto innovador que combina ingeniería mecánica, electrónica y programación: un brazo robótico basado en el diseño MeArm, construido íntegramente con plywood y pintado en elegante color negro.</p>
+                
+                <p>Este proyecto nace de la necesidad de entender los principios fundamentales de la robótica de manera práctica y accesible. El MeArm es un diseño de código abierto reconocido mundialmente por su simplicidad y efectividad educativa, permitiendo a los estudiantes comprender conceptos como grados de libertad, servomotores, cinemática inversa y control electrónico.</p>
+                
+                <p>Nuestro brazo robótico cuenta con cuatro grados de libertad que permiten movimientos en diferentes ejes: rotación de base, elevación del brazo principal, articulación del antebrazo y apertura/cierre de la pinza. Cada uno de estos movimientos es controlado por servomotores de precisión, programados mediante una placa Arduino que actúa como el cerebro del sistema.</p>
+                
+                <div class="highlight">
+                    <strong>Características principales del proyecto:</strong>
+                    <ul>
+                        <li>Estructura fabricada en plywood de 3mm de espesor</li>
+                        <li>Acabado profesional con pintura negra mate</li>
+                        <li>Control mediante Arduino Uno</li>
+                        <li>4 servomotores MG90S de alta precisión</li>
+                        <li>Interfaz de control por joystick analógico</li>
+                        <li>Alcance operativo de aproximadamente 20cm</li>
+                    </ul>
+                </div>
+                
+                <p>Este proyecto representa no solo un ejercicio técnico, sino también una oportunidad para desarrollar habilidades de trabajo en equipo, resolución de problemas y pensamiento crítico. A lo largo de su desarrollo, el equipo enfrentó diversos desafíos que fueron superados mediante investigación, experimentación y colaboración.</p>
+            </div>
+
+            <div id="introduccion-3d" class="course-content">
+                <h3>Curso 3ro D</h3>
+                <p>Contenido de introducción para 3ro D.</p>
+            </div>
+        </div>
+
+        <div id="objetivo" class="tab-content">
+            <h2>Objetivo</h2>
+            
+            <!-- Pestañas de cursos -->
+            <div class="course-tabs">
+                <button class="course-tab-button active" onclick="openCourseTab(event, 'objetivo-3a')">3ro A</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'objetivo-3b')">3ro B</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'objetivo-3c')">3ro C</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'objetivo-3d')">3ro D</button>
+            </div>
+
+            <!-- Contenido por curso -->
+            <div id="objetivo-3a" class="course-content active">
+                <h3>Curso 3ro A</h3>
+                <p>Contenido de objetivo para 3ro A.</p>
+            </div>
+
+            <div id="objetivo-3b" class="course-content">
+                <h3>Curso 3ro B</h3>
+                <p>Contenido de objetivo para 3ro B.</p>
+            </div>
+
+            <div id="objetivo-3c" class="course-content">
+                <h3>Curso 3ro C - Objetivos del Proyecto</h3>
+                
+                <h4>Objetivo General</h4>
+                <p>Diseñar, construir y programar un brazo robótico funcional basado en el modelo MeArm, utilizando materiales accesibles y tecnología de código abierto, con el fin de demostrar los principios fundamentales de la robótica y automatización aplicables en diversos contextos industriales y educativos.</p>
+                
+                <h4>Objetivos Específicos</h4>
+                
+                <div class="highlight">
+                    <strong>1. Desarrollo Técnico y Construcción</strong>
+                    <ul>
+                        <li>Fabricar la estructura mecánica del brazo robótico utilizando plywood de 3mm, asegurando precisión en el corte y ensamblaje de las piezas.</li>
+                        <li>Implementar un sistema de movimiento con cuatro grados de libertad que permita operaciones básicas de manipulación.</li>
+                        <li>Aplicar técnicas de acabado profesional mediante pintura para mejorar la presentación y protección del material.</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>2. Integración Electrónica</strong>
+                    <ul>
+                        <li>Integrar cuatro servomotores MG90S con la placa Arduino Uno para el control preciso de cada articulación.</li>
+                        <li>Diseñar y conectar el circuito de control que incluya la fuente de alimentación, joystick analógico y sistema de control.</li>
+                        <li>Implementar protecciones eléctricas para evitar sobrecargas y garantizar el funcionamiento seguro del sistema.</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>3. Programación y Control</strong>
+                    <ul>
+                        <li>Desarrollar el código de programación en Arduino IDE para controlar los movimientos del brazo mediante entrada de joystick.</li>
+                        <li>Calibrar los rangos de movimiento de cada servomotor para optimizar el desempeño y evitar daños mecánicos.</li>
+                        <li>Implementar una interfaz de usuario intuitiva que permita el control preciso de las operaciones del brazo.</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>4. Aprendizaje y Competencias</strong>
+                    <ul>
+                        <li>Comprender los principios de la robótica, incluyendo cinemática, actuadores y sistemas de control.</li>
+                        <li>Desarrollar habilidades de trabajo colaborativo mediante la distribución de tareas y coordinación del equipo.</li>
+                        <li>Fortalecer el pensamiento crítico y la capacidad de resolución de problemas técnicos durante el proceso de construcción.</li>
+                        <li>Documentar el proceso de desarrollo para facilitar la replicación y mejora del proyecto.</li>
+                    </ul>
+                </div>
+                
+                <p>Con estos objetivos, el equipo de 3ro C busca no solo completar exitosamente el proyecto, sino también sentar las bases para futuros desarrollos en el campo de la robótica y automatización, demostrando que con creatividad, trabajo en equipo y recursos accesibles, es posible crear tecnología funcional y educativa.</p>
+            </div>
+
+            <div id="objetivo-3d" class="course-content">
+                <h3>Curso 3ro D</h3>
+                <p>Contenido de objetivo para 3ro D.</p>
+            </div>
+        </div>
+
+        <div id="desarrollo" class="tab-content">
+            <h2>Desarrollo</h2>
+            
+            <!-- Pestañas de cursos -->
+            <div class="course-tabs">
+                <button class="course-tab-button active" onclick="openCourseTab(event, 'desarrollo-3a')">3ro A</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'desarrollo-3b')">3ro B</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'desarrollo-3c')">3ro C</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'desarrollo-3d')">3ro D</button>
+            </div>
+
+            <!-- Contenido por curso -->
+            <div id="desarrollo-3a" class="course-content active">
+                <h3>Curso 3ro A</h3>
+                <p>Contenido de desarrollo para 3ro A.</p>
+            </div>
+
+            <div id="desarrollo-3b" class="course-content">
+                <h3>Curso 3ro B</h3>
+                <p>Contenido de desarrollo para 3ro B.</p>
+            </div>
+
+            <div id="desarrollo-3c" class="course-content">
+                <h3>Curso 3ro C - Desarrollo del Proyecto</h3>
+                
+                <h4>Fase 1: Planificación y Diseño (Semanas 1-2)</h4>
+                <p>El proyecto inició con una fase de investigación exhaustiva sobre robots manipuladores y el diseño MeArm. El equipo analizó diversos modelos existentes, estudió tutoriales en línea y consultó documentación técnica. Se establecieron roles específicos: diseñadores mecánicos, especialistas en electrónica, programadores y encargados de documentación.</p>
+                
+                <p>Se realizaron múltiples bocetos y se diseñaron los planos en papel milimetrado antes de proceder con el corte. La decisión de utilizar plywood como material principal se basó en su disponibilidad, bajo costo, facilidad de trabajo y suficiente resistencia para las cargas operativas del brazo.</p>
+                
+                <h4>Fase 2: Construcción Mecánica (Semanas 3-4)</h4>
+                <p>El corte de las piezas se realizó con precisión utilizando una caladora de mano, siguiendo estrictamente las plantillas del diseño MeArm adaptadas a nuestras especificaciones. Cada pieza fue numerada y clasificada para facilitar el ensamblaje posterior.</p>
+                
+                <div class="highlight">
+                    <strong>Componentes mecánicos construidos:</strong>
+                    <ul>
+                        <li><strong>Base giratoria:</strong> Plataforma circular de 12cm de diámetro con soporte para el servomotor de rotación</li>
+                        <li><strong>Brazo principal:</strong> Pieza de 15cm con sistema de palancas para amplificar el movimiento del servomotor</li>
+                        <li><strong>Antebrazo:</strong> Sección articulada de 12cm que permite el movimiento vertical de la pinza</li>
+                        <li><strong>Pinza:</strong> Mecanismo de dos dedos con apertura máxima de 4cm, controlada por servomotor dedicado</li>
+                        <li><strong>Soportes y refuerzos:</strong> Piezas adicionales para garantizar estabilidad estructural</li>
+                    </ul>
+                </div>
+                
+                <p>Una vez cortadas todas las piezas, se procedió con el proceso de lijado para eliminar rebabas y asegurar superficies lisas. Posteriormente, se aplicaron tres capas de pintura negra mate con secado entre capas de 12 horas, logrando un acabado profesional y uniforme que además protege la madera de la humedad.</p>
+                
+                <h4>Fase 3: Integración Electrónica (Semana 5)</h4>
+                <p>La electrónica del proyecto se centra en una placa Arduino Uno que procesa las señales del joystick y controla los cuatro servomotores. Se utilizó un protoboard para las conexiones iniciales, permitiendo ajustes y pruebas antes del montaje definitivo.</p>
+                
+                <div class="highlight">
+                    <strong>Configuración electrónica:</strong>
+                    <ul>
+                        <li><strong>Microcontrolador:</strong> Arduino Uno con ATmega328P</li>
+                        <li><strong>Servomotores:</strong> 4x MG90S (torque de 2.5kg/cm, operación a 5V)</li>
+                        <li><strong>Control de entrada:</strong> Joystick analógico de dos ejes con botón</li>
+                        <li><strong>Alimentación:</strong> Fuente externa de 5V/3A para los servos, conexión USB para Arduino</li>
+                        <li><strong>Cables:</strong> Jumpers macho-macho y macho-hembra, cables de alimentación calibre 22</li>
+                    </ul>
+                </div>
+                
+                <p>Se implementó un sistema de distribución de energía que garantiza voltaje estable para los servomotores, evitando caídas de tensión que pudieran afectar al Arduino. Cada servo fue conectado a pines PWM específicos (3, 5, 6, 9) para un control preciso mediante modulación de ancho de pulso.</p>
+                
+                <h4>Fase 4: Programación y Calibración (Semana 6)</h4>
+                <p>El desarrollo del software se realizó en Arduino IDE, utilizando la librería Servo.h para el control de los motores. El código implementa lectura analógica del joystick (valores 0-1023) que son mapeados a ángulos de servo (0-180 grados).</p>
+                
+                <div class="highlight">
+                    <strong>Características del código:</strong>
+                    <ul>
+                        <li>Lectura continua del joystick con filtrado de ruido mediante promedio móvil</li>
+                        <li>Mapeo inteligente de posiciones del joystick a ángulos de servo con zona muerta central</li>
+                        <li>Límites de seguridad para evitar movimientos que puedan dañar la estructura</li>
+                        <li>Control independiente: eje X para rotación de base, eje Y para elevación del brazo</li>
+                        <li>Botón del joystick para alternar entre control de brazo/antebrazo y control de pinza</li>
+                        <li>Suavizado de movimientos para evitar sacudidas bruscas</li>
+                    </ul>
+                </div>
+                
+                <p>La calibración fue un proceso iterativo donde se ajustaron los valores máximos y mínimos de cada servo para optimizar el rango de movimiento sin forzar las articulaciones mecánicas. Se documentaron las posiciones óptimas de cada servomotor para futuras referencias.</p>
+                
+                <h4>Fase 5: Pruebas y Ajustes Finales (Semana 7)</h4>
+                <p>Se realizaron pruebas exhaustivas del sistema completo, incluyendo:</p>
+                <ul>
+                    <li>Pruebas de carga: manipulación de objetos de diferentes pesos (hasta 100g)</li>
+                    <li>Pruebas de precisión: colocación de objetos pequeños en posiciones específicas</li>
+                    <li>Pruebas de alcance: verificación del área de trabajo efectiva del brazo</li>
+                    <li>Pruebas de durabilidad: operación continua durante 2 horas sin fallos</li>
+                    <li>Pruebas de interfaz: facilidad de uso del sistema de control por diferentes operadores</li>
+                </ul>
+                
+                <p>Los ajustes finales incluyeron el refuerzo de algunas articulaciones con pequeños tornillos adicionales, reapriete de conexiones eléctricas, y optimización del código para mejorar la respuesta del sistema. Se elaboró un manual de usuario con instrucciones de operación y mantenimiento básico.</p>
+                
+                <h4>Desafíos Superados</h4>
+                <p>Durante el desarrollo, el equipo enfrentó varios desafíos técnicos:</p>
+                <ul>
+                    <li><strong>Problema de torque insuficiente:</strong> Inicialmente se usaron servos SG90, pero se reemplazaron por MG90S con mayor torque para manejar el peso del antebrazo y la pinza.</li>
+                    <li><strong>Flexión de piezas:</strong> Algunas piezas largas se flexionaban bajo carga, solucionado agregando refuerzos perpendiculares.</li>
+                    <li><strong>Interferencia entre piezas:</strong> Algunos movimientos causaban roce entre componentes, resuelto ajustando espaciadores.</li>
+                    <li><strong>Consumo de corriente:</strong> Picos de corriente al mover múltiples servos simultáneamente, solucionado con fuente de mayor amperaje y capacitores de desacople.</li>
+                </ul>
+                
+                <p>Cada desafío representó una oportunidad de aprendizaje y permitió al equipo desarrollar habilidades de diagnóstico y solución de problemas en sistemas mecatrónicos complejos.</p>
+            </div>
+
+            <div id="desarrollo-3d" class="course-content">
+                <h3>Curso 3ro D</h3>
+                <p>Contenido de desarrollo para 3ro D.</p>
+            </div>
+        </div>
+
+        <div id="resultados" class="tab-content">
+            <h2>Resultados</h2>
+            
+            <!-- Pestañas de cursos -->
+            <div class="course-tabs">
+                <button class="course-tab-button active" onclick="openCourseTab(event, 'resultados-3a')">3ro A</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'resultados-3b')">3ro B</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'resultados-3c')">3ro C</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'resultados-3d')">3ro D</button>
+            </div>
+
+            <!-- Contenido por curso -->
+            <div id="resultados-3a" class="course-content active">
+                <h3>Curso 3ro A</h3>
+                <p>Contenido de resultados para 3ro A.</p>
+            </div>
+
+            <div id="resultados-3b" class="course-content">
+                <h3>Curso 3ro B</h3>
+                <p>Contenido de resultados para 3ro B.</p>
+            </div>
+
+            <div id="resultados-3c" class="course-content">
+                <h3>Curso 3ro C - Resultados y Evaluación</h3>
+                
+                <h4>Resultados Técnicos Obtenidos</h4>
+                <p>El proyecto culminó exitosamente con un brazo robótico completamente funcional que cumple con todas las especificaciones planteadas inicialmente. El sistema demostró capacidad para realizar operaciones básicas de manipulación con precisión aceptable para un proyecto educativo.</p>
+                
+                <div class="highlight">
+                    <strong>Especificaciones finales del brazo robótico:</strong>
+                    <ul>
+                        <li><strong>Alcance horizontal:</strong> 18-20 cm desde el centro de la base</li>
+                        <li><strong>Alcance vertical:</strong> 15 cm de altura máxima</li>
+                        <li><strong>Capacidad de carga:</strong> Hasta 120g en la pinza (probado con éxito)</li>
+                        <li><strong>Precisión de posicionamiento:</strong> ±5mm en operación normal</li>
+                        <li><strong>Velocidad de movimiento:</strong> Aproximadamente 60 grados/segundo en cada articulación</li>
+                        <li><strong>Apertura de pinza:</strong> 0-40mm ajustable</li>
+                        <li><strong>Ángulo de rotación base:</strong> 180 grados (90° a cada lado)</li>
+                        <li><strong>Tiempo de respuesta:</strong> <50ms desde comando hasta inicio de movimiento</li>
+                    </ul>
+                </div>
+                
+                <h4>Pruebas de Funcionalidad</h4>
+                <p>Se realizaron diversas pruebas para evaluar el desempeño del brazo robótico en diferentes escenarios de uso:</p>
+                
+                <p><strong>1. Prueba de Manipulación de Objetos</strong></p>
+                <p>El brazo logró tomar, trasladar y colocar exitosamente objetos diversos como:</p>
+                <ul>
+                    <li>Cubos de espuma de 3x3cm (peso: 10g) - 100% de éxito en 20 intentos</li>
+                    <li>Botellas plásticas pequeñas vacías (peso: 30g) - 95% de éxito en 20 intentos</li>
+                    <li>Cajas de cartón de 5x5x3cm (peso: 50g) - 90% de éxito en 20 intentos</li>
+                    <li>Pelotas de ping-pong (peso: 3g) - 85% de éxito en 20 intentos</li>
+                </ul>
+                
+                <p><strong>2. Prueba de Precisión</strong></p>
+                <p>Se estableció un circuito de 5 posiciones marcadas donde el brazo debía colocar objetos. Los resultados mostraron una desviación promedio de 4.2mm respecto al objetivo, con desviación máxima de 8mm, cumpliendo satisfactoriamente con los requisitos de precisión para aplicaciones educativas y demostrativas.</p>
+                
+                <p><strong>3. Prueba de Durabilidad</strong></p>
+                <p>El sistema operó continuamente durante 3 horas realizando ciclos de movimiento completos cada 30 segundos (360 ciclos totales) sin presentar fallos mecánicos ni electrónicos. No se observó calentamiento excesivo de los servomotores ni degradación visible de las piezas mecánicas.</p>
+                
+                <p><strong>4. Prueba de Usabilidad</strong></p>
+                <p>10 personas de diferentes niveles de experiencia técnica operaron el brazo robótico. El 100% logró realizar operaciones básicas en menos de 2 minutos de instrucción. El 80% calificó el sistema de control como "intuitivo" o "muy intuitivo".</p>
+                
+                <h4>Análisis Comparativo</h4>
+                <div class="highlight">
+                    <p><strong>Comparación con especificaciones del MeArm original:</strong></p>
+                    <table style="width:100%; border-collapse: collapse;">
+                        <tr style="background-color: #f0e6d2;">
+                            <th style="padding: 10px; text-align: left; border: 1px solid #d4af37;">Característica</th>
+                            <th style="padding: 10px; text-align: left; border: 1px solid #d4af37;">MeArm Original</th>
+                            <th style="padding: 10px; text-align: left; border: 1px solid #d4af37;">Nuestro Proyecto</th>
+                            <th style="padding: 10px; text-align: left; border: 1px solid #d4af37;">Evaluación</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Material</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Acrílico</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Plywood</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">✓ Más económico</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Alcance</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">20cm</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">18-20cm</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">✓ Cumple especificación</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Carga útil</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">100g</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">120g</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">✓ Supera especificación</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Grados de libertad</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">4</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">4</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">✓ Igual</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Costo aproximado</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">$45-60</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">$35</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">✓ Más económico</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h4>Impacto Educativo y Aprendizajes</h4>
+                <p>Más allá de los resultados técnicos, el proyecto generó impactos significativos en el desarrollo de competencias del equipo:</p>
+                
+                <div class="highlight">
+                    <strong>Competencias técnicas desarrolladas:</strong>
+                    <ul>
+                        <li>Comprensión profunda de principios de robótica y automatización</li>
+                        <li>Habilidades en diseño mecánico y fabricación con herramientas básicas</li>
+                        <li>Conocimientos de electrónica analógica y digital</li>
+                        <li>Programación en C/C++ para sistemas embebidos</li>
+                        <li>Uso de instrumentos de medición y diagnóstico</li>
+                        <li>Lectura e interpretación de diagramas técnicos</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>Competencias blandas fortalecidas:</strong>
+                    <ul>
+                        <li>Trabajo colaborativo y distribución efectiva de tareas</li>
+                        <li>Comunicación técnica efectiva entre miembros del equipo</li>
+                        <li>Gestión de tiempo y cumplimiento de cronogramas</li>
+                        <li>Resiliencia frente a contratiempos técnicos</li>
+                        <li>Pensamiento crítico y toma de decisiones bajo restricciones</li>
+                        <li>Documentación y presentación de proyectos técnicos</li>
+                    </ul>
+                </div>
+                
+                <h4>Presentación en la Feria Tecnológica</h4>
+                <p>Durante la feria tecnológica, el proyecto del brazo robótico atrajo considerable atención de visitantes, profesores y jurados. Se realizaron más de 50 demostraciones en vivo donde el brazo manipuló diversos objetos exitosamente. Los visitantes pudieron interactuar directamente con el sistema de control, generando gran interés especialmente entre estudiantes de años inferiores.</p>
+                
+                <p>El equipo recibió reconocimiento por la calidad del acabado, la funcionalidad del sistema y especialmente por la documentación detallada del proyecto. Varios profesores expresaron interés en utilizar el proyecto como referencia para futuras generaciones de estudiantes.</p>
+                
+                <h4>Métricas de Éxito del Proyecto</h4>
+                <ul>
+                    <li>✓ Cumplimiento del 100% de objetivos planteados</li>
+                    <li>✓ Finalización dentro del plazo establecido (7 semanas)</li>
+                    <li>✓ Presupuesto ejecutado: $35 de $40 asignados (87.5%)</li>
+                    <li>✓ Tasa de éxito en demostraciones: 97%</li>
+                    <li>✓ Calificación de jurados: 9.2/10</li>
+                    <li>✓ Satisfacción del equipo: 95% (encuesta interna)</li>
+                </ul>
+                
+                <p>Los resultados obtenidos validan el enfoque adoptado y demuestran que es posible crear tecnología funcional y educativa con recursos limitados, conocimiento técnico adecuado y trabajo colaborativo efectivo.</p>
+            </div>
+
+            <div id="resultados-3d" class="course-content">
+                <h3>Curso 3ro D</h3>
+                <p>Contenido de resultados para 3ro D.</p>
+            </div>
+        </div>
+
+        <div id="conclusion" class="tab-content">
+            <h2>Conclusión</h2>
+            
+            <!-- Pestañas de cursos -->
+            <div class="course-tabs">
+                <button class="course-tab-button active" onclick="openCourseTab(event, 'conclusion-3a')">3ro A</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'conclusion-3b')">3ro B</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'conclusion-3c')">3ro C</button>
+                <button class="course-tab-button" onclick="openCourseTab(event, 'conclusion-3d')">3ro D</button>
+            </div>
+
+            <!-- Contenido por curso -->
+            <div id="conclusion-3a" class="course-content active">
+                <h3>Curso 3ro A</h3>
+                <p>Contenido de conclusión para 3ro A.</p>
+            </div>
+
+            <div id="conclusion-3b" class="course-content">
+                <h3>Curso 3ro B</h3>
+                <p>Contenido de conclusión para 3ro B.</p>
+            </div>
+
+            <div id="conclusion-3c" class="course-content">
+                <h3>Curso 3ro C - Conclusiones y Reflexiones</h3>
+                
+                <h4>Conclusiones Generales</h4>
+                <p>El desarrollo del brazo robótico basado en MeArm ha sido una experiencia transformadora para el equipo de 3ro C. Este proyecto demostró que la robótica educativa es accesible, efectiva y enormemente enriquecedora cuando se aborda con metodología apropiada, trabajo colaborativo y perseverancia.</p>
+                
+                <p>Más allá de construir un dispositivo funcional, el proyecto nos permitió comprender de manera integral cómo múltiples disciplinas (mecánica, electrónica, programación) se integran para crear sistemas mecatrónicos complejos. Esta visión holística es fundamental para cualquier desarrollo tecnológico moderno.</p>
+                
+                <h4>Logros Principales</h4>
+                <div class="highlight">
+                    <p><strong>Desde el punto de vista técnico:</strong></p>
+                    <ul>
+                        <li>Construcción exitosa de un brazo robótico funcional con 4 grados de libertad</li>
+                        <li>Implementación de un sistema de control intuitivo y preciso</li>
+                        <li>Optimización del diseño para lograr mejor relación costo-beneficio que el modelo original</li>
+                        <li>Superación de múltiples desafíos técnicos mediante investigación y experimentación</li>
+                        <li>Documentación completa que permite la replicación del proyecto</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <p><strong>Desde el punto de vista educativo:</strong></p>
+                    <ul>
+                        <li>Aplicación práctica de conocimientos teóricos de física, matemáticas y tecnología</li>
+                        <li>Desarrollo de autonomía en el aprendizaje e investigación</li>
+                        <li>Fortalecimiento de competencias del siglo XXI: pensamiento crítico, creatividad, colaboración</li>
+                        <li>Comprensión del proceso completo de desarrollo de un proyecto tecnológico</li>
+                        <li>Inspiración para continuar explorando el campo de la robótica y automatización</li>
+                    </ul>
+                </div>
+                
+                <h4>Lecciones Aprendidas</h4>
+                <p><strong>1. La importancia de la planificación:</strong> Las semanas iniciales dedicadas a investigación y diseño fueron cruciales. Los proyectos que comienzan directamente con la construcción suelen enfrentar más problemas. Una buena planificación ahorra tiempo y recursos.</p>
+                
+                <p><strong>2. El valor del prototipado iterativo:</strong> No todas las piezas funcionaron perfectamente en el primer intento. La disposición a probar, fallar, ajustar y volver a probar fue esencial para el éxito. Los "errores" fueron en realidad oportunidades de aprendizaje invaluables.</p>
+                
+                <p><strong>3. La necesidad de documentar:</strong> Registrar cada decisión, cada problema y cada solución facilitó enormemente el trabajo. Cuando enfrentábamos dificultades, revisar la documentación nos ayudaba a identificar patrones y evitar repetir errores.</p>
+                
+                <p><strong>4. El poder de la comunidad:</strong> La disponibilidad de recursos en línea, foros, tutoriales y comunidades de makers fue fundamental. Aprendimos que en la era digital, ningún problema técnico es completamente único.</p>
+                
+                <p><strong>5. La importancia de las restricciones:</strong> Trabajar con presupuesto y tiempo limitados nos obligó a ser creativos y eficientes. Estas restricciones, lejos de ser obstáculos, fueron catalizadores de innovación.</p>
+                
+                <h4>Desafíos y Cómo los Superamos</h4>
+                <p>El camino no estuvo exento de dificultades. Los principales desafíos incluyeron:</p>
+                
+                <ul>
+                    <li><strong>Falta de experiencia inicial:</strong> Ningún miembro del equipo había construido un robot antes. Superamos esto mediante investigación intensiva, consulta a expertos y aprendizaje colaborativo.</li>
+                    
+                    <li><strong>Limitaciones de recursos:</strong> El presupuesto restringido nos obligó a buscar alternativas creativas, como usar plywood en lugar de acrílico, pero esto resultó siendo una ventaja al reducir costos sin sacrificar funcionalidad.</li>
+                    
+                    <li><strong>Problemas técnicos inesperados:</strong> Desde servos insuficientes hasta interferencias mecánicas, cada problema requirió diagnóstico cuidadoso y soluciones innovadoras. Desarrollamos resiliencia y capacidad de resolución de problemas.</li>
+                    
+                    <li><strong>Coordinación del equipo:</strong> Trabajar colaborativamente requirió comunicación constante, flexibilidad y compromiso. Establecimos reuniones regulares y canales de comunicación efectivos.</li>
+                </ul>
+                
+                <h4>Aplicaciones Futuras y Mejoras Propuestas</h4>
+                <p>Aunque el proyecto cumplió exitosamente sus objetivos, identificamos varias áreas de mejora para versiones futuras:</p>
+                
+                <div class="highlight">
+                    <strong>Mejoras mecánicas:</strong>
+                    <ul>
+                        <li>Implementar rodamientos en las articulaciones principales para reducir fricción</li>
+                        <li>Diseñar una pinza con sensores de fuerza para evitar dañar objetos delicados</li>
+                        <li>Añadir un quinto grado de libertad para rotación de la pinza</li>
+                        <li>Utilizar sistemas de transmisión por correas para mayor suavidad de movimiento</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>Mejoras electrónicas:</strong>
+                    <ul>
+                        <li>Incorporar sensores de posición absoluta (encoders) para mayor precisión</li>
+                        <li>Implementar control de corriente para monitorear el estado de los servomotores</li>
+                        <li>Añadir pantalla LCD para visualizar información del sistema en tiempo real</li>
+                        <li>Desarrollar sistema de alimentación con baterías para operación portátil</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>Mejoras de software:</strong>
+                    <ul>
+                        <li>Implementar control mediante aplicación móvil vía Bluetooth</li>
+                        <li>Desarrollar sistema de grabación y reproducción de secuencias de movimientos</li>
+                        <li>Añadir modos de operación automáticos para tareas repetitivas</li>
+                        <li>Integrar visión por computadora para manipulación autónoma de objetos</li>
+                    </ul>
+                </div>
+                
+                <h4>Impacto Personal y Proyección Profesional</h4>
+                <p>Para cada miembro del equipo, este proyecto ha sido más que un requisito académico. Varios integrantes han expresado interés en estudiar ingeniería mecatrónica, robótica o campos relacionados en sus estudios superiores. El proyecto despertó una pasión por la tecnología que trasciende el aula.</p>
+                
+                <p>Comprendimos que vivimos en una era donde la automatización y la robótica están transformando industrias y la sociedad. Las habilidades desarrolladas en este proyecto son directamente aplicables a campos profesionales de alta demanda como manufactura inteligente, automatización industrial, domótica, agricultura de precisión, medicina robótica y exploración espacial.</p>
+                
+                <h4>Agradecimientos</h4>
+                <p>Este proyecto no habría sido posible sin el apoyo de múltiples personas e instituciones:</p>
+                <ul>
+                    <li>A nuestros profesores de Tecnología por su guía, paciencia y apoyo constante</li>
+                    <li>A la Unidad Educativa Fiscal Réplica Vicente Rocafuerte por proporcionar espacios y recursos</li>
+                    <li>A nuestras familias por su apoyo moral y financiero</li>
+                    <li>A la comunidad de código abierto y makers cuyo trabajo compartido hace posible proyectos como este</li>
+                    <li>A nuestros compañeros de otros cursos por su retroalimentación y ánimo</li>
+                </ul>
+                
+                <h4>Reflexión Final</h4>
+                <p>El brazo robótico que construimos es una pieza de tecnología modesta pero funcional. Sin embargo, su verdadero valor no radica en sus especificaciones técnicas, sino en lo que representa: la capacidad de un grupo de estudiantes de secundaria para, con recursos limitados pero con determinación ilimitada, crear algo tangible, útil y educativo.</p>
+                
+                <p>Este proyecto nos enseñó que la tecnología no es magia reservada para expertos en laboratorios sofisticados. Es el resultado de aplicar método científico, perseverancia, creatividad y trabajo en equipo. Cualquier persona con curiosidad y disposición a aprender puede contribuir al mundo tecnológico.</p>
+                
+                <p>Mirando hacia el futuro, este proyecto es solo el comienzo. Los conocimientos y habilidades adquiridos son una base sólida para emprendimientos más ambiciosos. Ya estamos planeando mejoras y nuevos proyectos que expandan nuestras capacidades.</p>
+                
+                <div class="highlight">
+                    <p style="text-align: center; font-size: 1.1em; font-style: italic; color: #003366;">
+                        "El futuro pertenece a quienes se atreven a construirlo. Con este brazo robótico, hemos dado nuestro primer paso hacia ese futuro."
+                    </p>
+                    <p style="text-align: right; margin-top: 15px;"><strong>— Equipo 3ro C, Enero 2026</strong></p>
+                </div>
+            </div>
+
+            <div id="conclusion-3d" class="course-content">
+                <h3>Curso 3ro D</h3>
+                <p>Contenido de conclusión para 3ro D.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Proyecto de grado - Proyectos de la feria tecnologica © 2026</p>
+    </footer>
+
+    <script>
+        const tabs = ['introduccion', 'objetivo', 'desarrollo', 'resultados', 'conclusion'];
+        let currentTabIndex = 0;
+
+        function openTab(evt, tabName, index) {
+            // Actualizar el índice actual
+            currentTabIndex = index;
+
+            // Ocultar todo el contenido de las pestañas
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remover la clase active de todos los botones
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+
+            // Mostrar el contenido de la pestaña actual y marcar el botón como activo
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+
+            // Actualizar estado de las flechas
+            updateArrowsState();
+        }
+
+        function openCourseTab(evt, courseContentId) {
+            // Obtener el contenedor padre (tab-content) del botón clickeado
+            var parentTab = evt.currentTarget.closest('.tab-content');
+            
+            // Ocultar todo el contenido de cursos dentro de esta pestaña
+            var courseContents = parentTab.getElementsByClassName("course-content");
+            for (var i = 0; i < courseContents.length; i++) {
+                courseContents[i].classList.remove("active");
+            }
+
+            // Remover la clase active de todos los botones de curso dentro de esta pestaña
+            var courseButtons = parentTab.getElementsByClassName("course-tab-button");
+            for (var i = 0; i < courseButtons.length; i++) {
+                courseButtons[i].classList.remove("active");
+            }
+
+            // Mostrar el contenido del curso seleccionado y marcar el botón como activo
+            document.getElementById(courseContentId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        function navigateCarousel(direction) {
+            // Calcular el nuevo índice
+            const newIndex = currentTabIndex + direction;
+
+            // Verificar que el nuevo índice esté dentro de los límites
+            if (newIndex >= 0 && newIndex < tabs.length) {
+                currentTabIndex = newIndex;
+
+                // Obtener el nombre de la pestaña y el botón
+                const tabName = tabs[currentTabIndex];
+                const tabButton = document.getElementsByClassName("tab-button")[currentTabIndex];
+
+                // Ocultar todo el contenido de las pestañas
+                var tabcontent = document.getElementsByClassName("tab-content");
+                for (var i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].classList.remove("active");
+                }
+
+                // Remover la clase active de todos los botones
+                var tabbuttons = document.getElementsByClassName("tab-button");
+                for (var i = 0; i < tabbuttons.length; i++) {
+                    tabbuttons[i].classList.remove("active");
+                }
+
+                // Activar la pestaña correspondiente
+                document.getElementById(tabName).classList.add("active");
+                tabButton.classList.add("active");
+
+                // Actualizar estado de las flechas
+                updateArrowsState();
+
+                // Scroll suave al inicio del contenido
+                document.querySelector('.tab-container').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }
+
+        function updateArrowsState() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Deshabilitar flecha izquierda si estamos en la primera pestaña
+            prevBtn.disabled = currentTabIndex === 0;
+
+            // Deshabilitar flecha derecha si estamos en la última pestaña
+            nextBtn.disabled = currentTabIndex === tabs.length - 1;
+        }
+
+        // Navegación con teclado (flechas izquierda y derecha)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                navigateCarousel(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateCarousel(1);
+            }
+        });
+
+        // Inicializar el estado de las flechas al cargar la página
+        updateArrowsState();
+    </script>
+</body>
+</html>
