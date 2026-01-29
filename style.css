@@ -27,6 +27,10 @@
             color: #ffffff;
         }
 
+        img {
+            height: 400px;
+        }
+
         .tab-container {
             background-color: #ffffff;
             max-width: 1200px;
