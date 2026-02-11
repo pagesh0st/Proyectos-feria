@@ -1,0 +1,265 @@
+{
+    "nombre": "Sistema de Riego Automático Casero",
+    "curso": "3A",
+    "introduccion": {
+        "imagen": "proyectos/3roA-2.jpeg", 
+        "parrafos": [
+            "En un contexto donde la conservación del agua y el cuidado eficiente de plantas son cada vez más importantes, el equipo de 3ro A presenta un proyecto práctico que combina electrónica, programación y conciencia ambiental: un sistema de riego automático casero con diseño de maqueta arquitectónica.",
+            "Este proyecto surge de la necesidad de mantener plantas saludables de manera autónoma, especialmente en hogares donde las personas tienen horarios ocupados o durante períodos de ausencia. El riego automático evita tanto el exceso como la falta de agua, dos problemas comunes que pueden dañar o matar plantas domésticas.",
+            "Nuestro sistema utiliza tecnología de sensado de humedad del suelo para activar automáticamente una bomba de agua cuando la tierra está seca. El proyecto está presentado en forma de maqueta de una casa con techo a dos aguas, demostrando cómo esta tecnología puede integrarse en un entorno doméstico real con plantas decorativas y un sistema de almacenamiento de agua."
+        ],
+        "caracteristicas": [
+            "Maqueta de casa con estructura de cartón corrugado y techo inclinado",
+            "Sistema de riego automático controlado por Arduino",
+            "Sensor de humedad de suelo para detección de necesidad de riego",
+            "Bomba de agua sumergible de 3-5V para distribución de agua",
+            "Depósito de agua integrado en la estructura",
+            "Plantas reales en macetas dentro y alrededor de la maqueta",
+            "Módulo relé para control seguro de la bomba",
+            "Presentación estética que simula aplicación doméstica real",
+            "Sistema de alimentación mediante batería o adaptador"
+        ]
+    },
+
+    "objetivo": {
+        "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del desarrollo del sistema de riego casero:",
+        "objetivos": [
+            {
+                "titulo": "1. Diseño y Construcción de la Maqueta Arquitectónica",
+                "descripcion": "Diseñar y construir una maqueta de casa de aproximadamente 40x30cm que represente una vivienda con sistema de riego integrado. Construir estructura con cartón corrugado de 5mm de grosor, incluyendo paredes, piso y techo a dos aguas. Diseñar espacios interiores para alojar macetas con plantas reales, depósito de agua, y componentes electrónicos ocultos. Crear aberturas decorativas (puertas, ventanas) que permitan visualizar el interior. Aplicar acabado estético: pintar paredes, agregar detalles arquitectónicos (tejas simuladas en techo, vegetación decorativa). Asegurar estabilidad estructural que soporte peso de plantas con tierra húmeda y reservorio de agua."
+            },
+            {
+                "titulo": "2. Integración del Sistema de Sensado",
+                "descripcion": "Integrar sensor de humedad capacitivo o resistivo (YL-69) con Arduino para monitoreo continuo del nivel de humedad en el suelo. Insertar sensor a profundidad apropiada (5-7cm) en la maceta principal. Calibrar sensor determinando valores de referencia: tierra seca (>700), tierra húmeda ideal (400-600), tierra mojada (<400). Implementar lectura cada 10 segundos con promedio de 3 muestras para estabilidad. Establecer umbral crítico de activación (típicamente 650-700) que dispare el riego automáticamente. Proteger conexiones del sensor con termocontrátil para evitar corrosión por humedad."
+            },
+            {
+                "titulo": "3. Sistema de Almacenamiento y Distribución de Agua",
+                "descripcion": "Diseñar e integrar depósito de agua con capacidad de 0.5-1 litro dentro o junto a la maqueta. Usar contenedor plástico transparente o decorativo que complemente el diseño estético. Instalar mini bomba sumergible de 3-5V en el depósito. Conectar manguera flexible (4-6mm de diámetro) desde bomba hasta zona de riego de las plantas. Diseñar sistema de distribución: manguera con pequeñas perforaciones o boquilla de salida sobre macetas. Calcular que cada ciclo de riego entregue 30-50ml de agua (3-5 segundos de bombeo). Implementar sistema visual para verificar nivel de agua restante en depósito."
+            },
+            {
+                "titulo": "4. Programación del Control Automático",
+                "descripcion": "Programar algoritmo de riego inteligente en Arduino IDE. Implementar bucle que lee sensor de humedad cada 10 segundos. Programar lógica condicional: SI humedad > umbral_seco (700) ENTONCES activar bomba por 5 segundos, SINO mantener sistema en espera. Agregar período de espera obligatorio de 30 minutos después de cada riego para permitir absorción del agua antes de nueva medición. Implementar LED indicador que se enciende durante el riego activo. Programar protección: máximo 6 riegos por día para prevenir sobre-riego por mal funcionamiento del sensor. Incluir comunicación serial para monitoreo de valores y debug."
+            },
+            {
+                "titulo": "5. Selección y Cuidado de Plantas",
+                "descripcion": "Seleccionar plantas apropiadas para el sistema: especies de bajo mantenimiento como suculentas pequeñas, cactus, o hierbas aromáticas (albahaca, menta). Preparar macetas de tamaño apropiado (8-12cm de diámetro) con orificios de drenaje. Usar sustrato de calidad: mezcla de tierra para macetas con perlita para buen drenaje. Plantar con cuidado asegurando que las raíces tengan espacio adecuado. Ubicar plantas estratégicamente en la maqueta: algunas dentro de la 'casa', otras en el 'jardín' exterior. Realizar riego manual inicial para asentar la tierra antes de activar sistema automático. Monitorear salud de plantas durante primeras 2 semanas de operación automática."
+            },
+            {
+                "titulo": "6. Sistema Eléctrico y Energético",
+                "descripcion": "Diseñar circuito eléctrico con componentes apropiados: Arduino Uno como controlador, sensor de humedad en pin analógico A0, módulo relé de 5V en pin digital 7, bomba de agua conectada al relé (circuito de potencia aislado). Implementar alimentación: batería de 9V o adaptador 5V para Arduino, fuente común o separada para bomba (considerar corriente de 200-400mA). Verificar todas las conexiones con multímetro antes de encender. Agregar capacitor de 100µF en paralelo con bomba para suavizar picos de corriente. Implementar interruptor general de encendido/apagado. Calcular autonomía: con batería 9V (~500mAh) aproximadamente 2-3 días de operación, con adaptador USB operación indefinida."
+            },
+            {
+                "titulo": "7. Pruebas y Validación del Sistema Integrado",
+                "descripcion": "Realizar pruebas exhaustivas del sistema completo: verificar que sensor detecta correctamente tierra seca vs húmeda, validar que bomba se activa solo cuando es necesario, confirmar que cantidad de agua entregada (50ml) es apropiada. Probar ciclos completos: permitir que tierra se seque naturalmente, observar activación automática del riego, verificar que humedad sube después del riego. Documentar parámetros óptimos: umbral de activación final, duración ideal de bombeo, frecuencia de riego (típicamente 1-2 veces al día). Realizar 20 ciclos automáticos sin intervención. Monitorear salud de plantas durante 3 semanas: crecimiento, color de hojas, ausencia de marchitamiento o exceso de agua."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión de automatización doméstica y agricultura de precisión",
+                "Experiencia práctica con sensores analógicos y su calibración",
+                "Habilidades de construcción de maquetas arquitectónicas funcionales",
+                "Conocimiento de circuitos con relés y control de actuadores",
+                "Integración de sistemas biológicos (plantas) con tecnología electrónica",
+                "Conciencia ambiental sobre conservación de agua y sostenibilidad",
+                "Comunicación visual: presentación de tecnología mediante maquetas atractivas"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una con objetivos y entregables específicos:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación y Conceptualización",
+                "descripcion": "Se inició investigando sistemas de riego automático domésticos y principios de agricultura de precisión. Se estudió cómo funcionan los sensores de humedad de suelo basados en conductividad eléctrica. Se decidió presentar el proyecto como maqueta arquitectónica para demostrar aplicación práctica en contexto doméstico. Se investigaron necesidades hídricas de plantas comunes de interior y frecuencias óptimas de riego. Se definió concepto: casa con techo inclinado que alberga sistema de riego visible y funcional."
+            },
+            {
+                "titulo": "Fase 2: Diseño de la Maqueta",
+                "descripcion": "Se establecieron especificaciones de la maqueta: base de 40x30cm, altura de paredes 25cm, techo a dos aguas con pendiente de 45°. Se diseñaron espacios interiores: área central para macetas principales (15x15cm), compartimento lateral para depósito de agua, espacio oculto para Arduino y batería. Se planificó el techo desmontable para acceso a componentes. Se seleccionó cartón corrugado como material principal por su facilidad de trabajo, bajo costo y suficiente resistencia. Se diseñaron elementos decorativos: ventanas, puerta frontal, cerca pequeña para 'jardín' exterior."
+            },
+            {
+                "titulo": "Fase 3: Construcción de la Estructura",
+                "descripcion": "Se cortó cuidadosamente el cartón siguiendo plantillas: 4 paredes, base rectangular, 2 piezas triangulares para hastiales del techo, 2 rectángulos para las vertientes del tejado. Se ensambló la estructura usando cola blanca y refuerzos de cinta adhesiva en esquinas interiores. Se crearon aberturas para ventanas y puerta. Se construyó el techo desmontable con bisagras de cartón. Se pintó el exterior: paredes en tono crema, techo en terracota simulando tejas. Se agregaron detalles: marcadores para tejas individuales, marco de ventanas con marcadores, vegetación decorativa pegada alrededor."
+            },
+            {
+                "titulo": "Fase 4: Preparación del Sistema de Plantas",
+                "descripcion": "Se adquirieron 3 plantas pequeñas: 2 suculentas (echeveria y crassula) y 1 planta de albahaca. Se prepararon macetas decorativas de cerámica de 10cm de diámetro. Se perforaron orificios de drenaje en las bases. Se agregó capa de piedras pequeñas (2cm) para drenaje. Se llenó con sustrato preparado: 70% tierra para macetas, 30% perlita. Se plantaron las plantas con cuidado. Se ubicaron estratégicamente: 2 plantas dentro de la maqueta, 1 en el 'jardín' exterior. Se realizó riego manual abundante inicial y se esperó 48 horas para asentamiento antes de instalar electrónica."
+            },
+            {
+                "titulo": "Fase 5: Montaje del Sistema Electrónico",
+                "descripcion": "Se instalaron componentes siguiendo esquema: Arduino Uno oculto en compartimento lateral, sensor de humedad YL-69 insertado en maceta principal (planta de albahaca) a 6cm de profundidad, módulo relé de 5V montado cerca de la bomba. Se instaló depósito de agua (botella plástica transparente de 750ml decorada) en esquina de la maqueta. Se sumergió mini bomba de 3V en el depósito. Se conectó manguera transparente de 50cm desde bomba hasta salida sobre macetas con distribuidor en T. Se agregó LED verde en exterior de la maqueta como indicador de riego activo. Se organizó cableado oculto detrás de paredes internas."
+            },
+            {
+                "titulo": "Fase 6: Programación y Calibración",
+                "descripcion": "Se implementó código Arduino: lectura del sensor cada 10 segundos con promedio móvil de 3 lecturas. Se realizó calibración midiendo valores: tierra completamente seca (820), húmeda ideal (550), mojada (320). Se estableció umbral de activación en 700. Se programó: si humedad > 700, activar relé por 5 segundos (bombear ~45ml), esperar 30 minutos antes de verificar nuevamente. Se agregó límite de 6 riegos máximos por día. Se implementó LED que parpadea durante bombeo. Se incluyó comunicación serial mostrando: valor actual de humedad, estado del sistema ('Seco - Regando', 'Húmedo - Esperando'), contador de riegos del día."
+            },
+            {
+                "titulo": "Fase 7: Pruebas y Optimización",
+                "descripcion": "Se validó el sistema durante 4 semanas de operación continua en el aula. Se documentaron ciclos de riego: frecuencia promedio de 1 riego cada 10-14 horas dependiendo de temperatura ambiente y luz. Se verificó salud de plantas: las 3 plantas mostraron crecimiento vigoroso, hojas verdes brillantes, ausencia de marchitamiento. Se comparó consumo de agua: sistema automático utilizó 35% menos agua que riego manual debido a precisión en cantidad y timing. Se realizaron ajustes menores: reducción de duración de bombeo de 7s a 5s (volumen excesivo inicialmente), ajuste de posición del sensor ligeramente más profundo. Se probó el sistema durante fin de semana largo (4 días) sin supervisión: funcionó perfectamente, plantas saludables al retorno."
+            }
+        ],
+        "documentacion": "Todo el proceso fue documentado minuciosamente con planos de la maqueta, diagramas de circuito eléctrico, código Arduino completo comentado, tabla de calibración del sensor con fotografías, registro del crecimiento de plantas con fotos semanales, y guía de construcción ilustrada paso a paso para replicación."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó exitosamente con un sistema de riego automático completamente funcional presentado en una atractiva maqueta arquitectónica que capta la atención y demuestra aplicabilidad práctica de la tecnología.",
+        "especificaciones_finales": {
+            "descripcion": "Especificaciones técnicas del sistema terminado:",
+            "specs": [
+                "Dimensiones de maqueta: 40cm × 30cm × 25cm (altura de paredes) + techo",
+                "Capacidad del depósito de agua: 750ml (suficiente para 15-20 riegos)",
+                "Volumen de riego por ciclo: 45ml en 5 segundos",
+                "Frecuencia de riego: 1-2 veces al día según condiciones ambientales",
+                "Número de plantas integradas: 3 (2 suculentas, 1 albahaca)",
+                "Autonomía eléctrica: 48-72 horas con batería 9V o indefinida con USB",
+                "Costo total de construcción: $24 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas del sistema integrado:",
+            "metricas": [
+                "Precisión de activación: 97% (riega cuando necesario, no riega cuando no es necesario)",
+                "Eficiencia hídrica: 35% menos consumo comparado con riego manual",
+                "Salud de plantas: 100% de supervivencia durante 4 semanas, crecimiento observable en todas",
+                "Autonomía demostrada: 4 días continuos sin supervisión ni recarga de agua (fin de semana largo)",
+                "Limitación identificada: sensor requiere recalibración cada 3-4 semanas debido a cambios en conductividad del suelo"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $24 USD, el sistema ofrece excelente valor como proyecto educativo y demostrador tecnológico. La maqueta arquitectónica elevó la presentación profesional del proyecto significativamente comparado con sistemas expuestos en simples tablas o cajas. El costo es mínimo comparado con sistemas de riego doméstico comerciales ($40-$100).",
+                "Desglose de costos: Arduino Uno ($8), Sensor de humedad YL-69 ($2), Módulo relé 5V ($2), Mini bomba sumergible ($4), plantas y macetas ($4), materiales de maqueta (cartón, pintura, pegamento) ($3), manguera y accesorios ($1)."
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un impacto significativo en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: programación de control automático, trabajo con sensores analógicos, construcción de maquetas arquitectónicas",
+                "Transversales: pensamiento en diseño integral (funcionalidad + estética), integración de sistemas vivos con tecnología, comunicación visual efectiva",
+                "Actitudinales: conciencia ambiental sobre agua, paciencia para observar procesos biológicos, orgullo por obra presentable profesionalmente"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica, la maqueta del sistema de riego casero atrajo gran atención por su presentación arquitectónica y plantas vivas reales. Se realizaron más de 85 demostraciones explicando el funcionamiento automático. Los visitantes quedaron impresionados por la integración estética de tecnología y naturaleza. Varios docentes preguntaron sobre posibilidad de replicar el proyecto.",
+                "El proyecto recibió reconocimiento especial por 'Mejor Presentación Visual' del jurado, destacando la calidad de la maqueta y la efectividad en comunicar conceptos técnicos mediante una presentación arquitectónica accesible y atractiva."
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "La presentación importa: una maqueta profesional eleva la percepción del proyecto significativamente",
+                "Los sistemas vivos requieren paciencia: las plantas tardan días/semanas en mostrar resultados",
+                "La calibración es esencial pero no permanente: el suelo cambia con el tiempo y requiere recalibración",
+                "La automatización beneficia lo biológico: las plantas prosperan mejor con riego consistente y apropiado",
+                "La sostenibilidad es medible: documentar ahorro de agua (35%) valida el valor del proyecto"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (7/7 objetivos logrados)",
+                "Tiempo de desarrollo: 6 semanas (dentro del plazo de 8 semanas)",
+                "Presupuesto: $24 / $30 asignados (20% bajo presupuesto)",
+                "Tasa de supervivencia de plantas: 100% (3/3 plantas saludables tras 4 semanas)",
+                "Satisfacción del equipo: 9.8/10 (encuesta post-proyecto)"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo del Sistema de Riego Automático Casero representó una experiencia integral que combinó electrónica, programación, diseño arquitectónico, agricultura y conciencia ambiental, culminando en un proyecto funcional y visualmente impactante.",
+            "Logramos crear un sistema completamente autónomo con un presupuesto de apenas $24 USD, demostrando que la tecnología sostenible puede ser accesible. La decisión de presentar el proyecto como maqueta arquitectónica transformó un circuito funcional en una demostración profesional de tecnología doméstica aplicada."
+        ],
+        "logros_principales": [
+            "Sistema de riego automático funcional con 97% de precisión en activación",
+            "Maqueta arquitectónica de alta calidad que comunica efectivamente el concepto",
+            "Ahorro documentado del 35% en consumo de agua comparado con riego manual",
+            "100% de supervivencia y crecimiento saludable de plantas durante pruebas",
+            "Reconocimiento por mejor presentación visual en feria tecnológica"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado:",
+            "dimensiones": [
+                "Como demostración de domótica: tecnología del hogar inteligente al alcance de estudiantes",
+                "Como lección sobre sostenibilidad: conservación de recursos mediante automatización inteligente",
+                "Como integración de disciplinas: electrónica, programación, arquitectura y biología trabajando juntas",
+                "Como comunicación visual: demostrar que presentación profesional amplifica impacto de ideas técnicas",
+                "Como inspiración práctica: mostrar que tecnología puede cuidar seres vivos de manera efectiva"
+            ]
+        },
+        "conexion_mundo_real": {
+            "parrafos": [
+                "Nuestra maqueta de riego automático ilustra principios que se aplican en casas inteligentes reales, invernaderos automatizados, jardines verticales urbanos y sistemas de agricultura de precisión, aunque a escala educativa simplificada.",
+                "Los desafíos que enfrentamos —calibración de sensores, optimización de frecuencia de riego, integración estética de tecnología en espacios habitables— son exactamente los mismos que ingenieros de domótica y agricultura automatizada enfrentan en proyectos comerciales y profesionales."
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Momentos transformadores de aprendizaje:",
+            "desafios": [
+                "Construcción de maqueta estable: enseñó importancia de planificación estructural y refuerzos adecuados",
+                "Calibración inicial del sensor: reveló que cada tipo de suelo tiene características eléctricas únicas",
+                "Balance entre riego y drenaje: desarrolló comprensión de necesidades hídricas de plantas",
+                "Integración oculta de electrónica: ilustró principios de diseño industrial donde tecnología es funcional pero invisible"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro diseño actual: sensor único (solo monitorea una maceta), ausencia de medición de otros parámetros (luz, temperatura ambiente), sistema de riego de un solo punto (no distribuido entre todas las plantas), necesidad de recalibración periódica, y dependencia de recarga manual del depósito de agua.",
+                "Estas limitaciones no son defectos sino oportunidades identificadas para iteraciones futuras del proyecto y versiones más sofisticadas del sistema."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Sistema de Riego Casero v2.0:",
+            "mejoras": [
+                "Sensado múltiple: sensor de humedad en cada maceta, sensor de temperatura y humedad ambiental (DHT22), sensor de nivel de agua en depósito con alerta de recarga",
+                "Riego distribuido: sistema de goteo con válvulas individuales para cada planta, permitiendo personalización según necesidades específicas",
+                "Registro de datos: tarjeta SD para logging histórico de humedad y riegos, generación de gráficas de tendencias",
+                "Conectividad IoT: módulo WiFi (ESP8266) para monitoreo remoto vía app móvil, notificaciones cuando depósito está bajo, ajuste remoto de parámetros de riego"
+            ]
+        },
+        "valor_educativo": {
+            "parrafos": [
+                "Como plataforma educativa, este proyecto es excepcional: costo accesible (<$25), integración natural de múltiples disciplinas (electrónica, programación, arquitectura, biología), resultados tangibles y visibles (plantas creciendo), y presentación que comunica efectivamente conceptos técnicos a audiencias no técnicas.",
+                "Proporciona contexto real para conceptos de ciencias naturales (necesidades de plantas, fotosíntesis, transpiración), física (conductividad eléctrica, flujo de líquidos), programación (control con retroalimentación, algoritmos condicionales), y diseño (maquetas, comunicación visual), todo de manera integrada y emocionalmente atractiva."
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo:",
+            "aspectos": [
+                "Despertar de intereses: consideración de carreras en domótica, agricultura automatizada, arquitectura sostenible",
+                "Desarrollo de conciencia ambiental: apreciación profunda del valor del agua y recursos naturales",
+                "Habilidades de presentación: aprender que comunicación visual efectiva es tan importante como funcionalidad técnica",
+                "Conexión con naturaleza: experiencia de cuidar seres vivos mediante tecnología propia genera satisfacción única"
+            ]
+        },
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares:",
+            "consejos": [
+                "Inviertan en presentación: una maqueta profesional transforma percepción del proyecto",
+                "Sean pacientes con plantas: resultados biológicos toman tiempo pero son gratificantes",
+                "Documenten calibración: valores de sensor cambian con el tiempo, registren todo",
+                "Prueben extensivamente: dejen el sistema operar días sin supervisión antes de la presentación",
+                "Disfruten la simbiosis: ver prosperar plantas cuidadas por su propia tecnología es mágico"
+            ]
+        },
+        "reflexion_filosofica": {
+            "parrafos": [
+                "Este proyecto también invitó a reflexión sobre nuestra relación con tecnología y naturaleza: ¿Puede la automatización acercarnos a la naturaleza en lugar de alejarnos? Nuestro sistema no reemplaza la conexión con plantas, sino que facilita su cuidado óptimo, permitiendo que prosperen incluso cuando estamos ocupados.",
+                "La pregunta nos lleva a apreciar que tecnología bien diseñada no tiene por qué ser disruptiva de procesos naturales, sino que puede ser simbiótica, mejorando tanto la salud de plantas como nuestra calidad de vida, una lección relevante para futuros ingenieros y ciudadanos conscientes."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestros profesores por permitirnos mantener plantas vivas en el aula durante semanas",
+            "A nuestra institución por el espacio y apoyo para proyectos con componentes biológicos",
+            "A nuestras familias por ayudarnos a ensayar construcción de maquetas en casa",
+            "A tutoriales en línea de Arduino y riego automático que facilitaron nuestro aprendizaje"
+        ],
+        "cierre": {
+            "parrafos": [
+                "En conclusión, el Sistema de Riego Automático Casero no es tecnología revolucionaria, pero fue profundamente significativo para nosotros como estudiantes interesados en aplicar conocimientos técnicos para sostenibilidad y mejora de vida cotidiana.",
+                "Aprendimos que la sostenibilidad genuina se construye con automatización inteligente, se demuestra con datos medibles, se comunica mediante presentación profesional, y se valida con resultados tangibles: plantas saludables y agua conservada.",
+                "Este proyecto representa nuestro compromiso con usar tecnología de manera responsable y armoniosa con el medio ambiente. La semilla de conciencia ecológica tecnológica está plantada, regada automáticamente, y creciendo fuerte. La aventura de ingeniería sostenible apenas comienza."
+            ]
+        }
+    }
+}

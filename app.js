@@ -478,14 +478,14 @@ function crearEstructuraSeccion(seccionId) {
         }
         html += '</div>';
 
-        // Contenido por proyecto
+        // Contenido por proyecto - SIN PANTALLA DE CARGANDO
         for (let i = 1; i <= config.proyectosPorCurso[curso]; i++) {
             const projectActiveClass = i === 1 ? 'active' : '';
             const displayStyle = i === 1 ? 'block' : 'none';
             
             html += `<div id="${seccionId}-${curso}-proyecto${i}" class="project-content ${projectActiveClass}" 
-                         style="display: ${displayStyle};" data-curso="${curso}" data-proyecto="${i}">`;
-            html += '<div class="loading">Cargando contenido...</div>';
+                         style="display: ${displayStyle};" data-curso="${curso}" data-proyecto="${i}" data-seccion="${seccionId}" data-loaded="false">`;
+            html += '';  // Sin contenido inicial
             html += '</div>';
         }
         
@@ -499,7 +499,7 @@ function crearEstructuraSeccion(seccionId) {
 async function cargarContenidoProyecto(elemento) {
     const curso = elemento.dataset.curso;
     const numeroProyecto = elemento.dataset.proyecto;
-    const seccionId = elemento.id.split('-')[0];
+    const seccionId = elemento.dataset.seccion;
     
     const data = await cargarProyecto(curso, numeroProyecto);
     
@@ -512,6 +512,7 @@ async function cargarContenidoProyecto(elemento) {
     html += renderizarContenidoProyecto(data, seccionId);
     
     elemento.innerHTML = html;
+    elemento.dataset.loaded = 'true';
 }
 
 // Funciones de navegación
@@ -554,7 +555,7 @@ function openCourseTab(evt, courseContentId) {
     evt.currentTarget.classList.add("active");
 }
 
-function openProjectTab(evt, projectContentId) {
+async function openProjectTab(evt, projectContentId) {
     const parentCourse = evt.currentTarget.closest('.course-content');
 
     const projectContents = parentCourse.getElementsByClassName("project-content");
@@ -573,9 +574,9 @@ function openProjectTab(evt, projectContentId) {
     projectElement.style.display = "block";
     evt.currentTarget.classList.add("active");
     
-    // Cargar contenido si aún muestra "Cargando..."
-    if (projectElement.querySelector('.loading')) {
-        cargarContenidoProyecto(projectElement);
+    // Cargar contenido automáticamente si no ha sido cargado
+    if (projectElement.dataset.loaded === 'false') {
+        await cargarContenidoProyecto(projectElement);
     }
 }
 
@@ -625,12 +626,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         crearEstructuraSeccion(seccion);
     });
     
-    // Cargar el primer proyecto de cada sección visible
-    for (const seccion of config.secciones) {
-        const primerProyecto = document.getElementById(`${seccion}-3a-proyecto1`);
-        if (primerProyecto && seccion === 'introduccion') {
-            await cargarContenidoProyecto(primerProyecto);
-        }
+    // Cargar el primer proyecto visible (introducción 3a proyecto 1)
+    const primerProyecto = document.getElementById('introduccion-3a-proyecto1');
+    if (primerProyecto) {
+        await cargarContenidoProyecto(primerProyecto);
     }
     
     updateArrowsState();

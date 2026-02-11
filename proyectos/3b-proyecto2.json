@@ -1,0 +1,263 @@
+{
+    "nombre": "Mascota Robótica Interactiva",
+    "curso": "3B",
+    "introduccion": {
+        "imagen": "proyectos/3roB-2.jpeg", 
+        "parrafos": [
+            "En un mundo donde la tecnología cada vez más simula comportamientos de seres vivos, el equipo de 3ro B presenta un proyecto fascinante que combina mecánica, electrónica y programación: una mascota robótica interactiva capaz de realizar movimientos básicos como sentarse, pararse y caminar.",
+            "Este proyecto surge del interés por entender cómo funcionan los robots con articulaciones y movimientos similares a los de animales reales. La robótica biopédica (inspirada en seres vivos) es un campo que va desde juguetes interactivos hasta robots de asistencia terapéutica y exploración en terrenos difíciles.",
+            "Nuestra mascota robótica utiliza servomotores de precisión para controlar cada articulación, permitiendo movimientos coordinados y fluidos. El sistema se basa en el principio de cinemática articulada: cuatro servomotores SG90 controlan las patas delanteras y traseras, permitiendo que el robot adopte diferentes posturas (sentado, parado) y realice una marcha básica desplazándose hacia adelante."
+        ],
+        "caracteristicas": [
+            "Estructura corporal fabricada con materiales ligeros (cartón, madera balsa, impresión 3D)",
+            "Sistema de 4 servomotores SG90 para control de extremidades",
+            "Control mediante Arduino Uno para coordinación de movimientos",
+            "Diseño cuadrúpedo simplificado con dos grados de libertad por pata",
+            "Tres modos de operación: sentado, parado y caminando",
+            "Secuencias de movimiento programadas para transiciones suaves",
+            "Sistema de alimentación mediante batería o USB",
+            "Diseño personalizable con decoraciones que simulan mascotas (perro, gato, etc.)"
+        ]
+    },
+
+    "objetivo": {
+        "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del desarrollo de robótica biopédica:",
+        "objetivos": [
+            {
+                "titulo": "1. Diseño y Construcción de la Estructura Corporal",
+                "descripcion": "Diseñar un cuerpo de mascota con proporciones equilibradas: largo 15-20cm, ancho 8-10cm, altura variable según postura. Construir estructura de dos niveles: plataforma superior para Arduino y batería (~80g), plataforma inferior con puntos de anclaje para 4 servomotores. Seleccionar materiales ligeros pero resistentes (cartón corrugado, madera balsa o PLA para impresión 3D). Diseñar patas articuladas con dos segmentos cada una: muslo y pierna. Calcular centro de gravedad para evitar vuelcos durante movimientos. Aplicar diseño estético que simule una mascota (orejas, cola, ojos, etc.)."
+            },
+            {
+                "titulo": "2. Sistema de Articulaciones con Servomotores",
+                "descripcion": "Integrar 4 servomotores SG90 (o MG90) para control de patas: 2 para extremidades delanteras y 2 para traseras. Montar servomotores en posición estratégica como 'cadera' virtual de cada pata. Diseñar brazos de palanca (longitud 4-6cm) desde eje del servo hasta el pie. Calibrar rango de movimiento de cada servo: ángulo mínimo (sentado ~90°), medio (parado ~45°), máximo (levantado ~0°). Asegurar torque suficiente de servos (mínimo 1.8kg/cm) para soportar peso del robot. Implementar sistema de fijación robusto que evite aflojamiento durante operación."
+            },
+            {
+                "titulo": "3. Programación de Posturas Básicas",
+                "descripcion": "Programar tres posturas fundamentales almacenadas como arrays de ángulos. Postura 'sentado': servos traseros en 90° (flexionados), delanteros en 45° (semi-extendidos). Postura 'parado': todos los servos en 45° (posición neutral, robot en cuatro patas). Postura 'preparado para caminar': ligera flexión asimétrica preparando siguiente paso. Implementar función de transición suave entre posturas usando incrementos graduales de 5° cada 50ms para evitar movimientos bruscos. Calibrar velocidad de transición para lograr movimientos naturales (~1-2 segundos por cambio completo de postura)."
+            },
+            {
+                "titulo": "4. Implementación de Secuencia de Marcha",
+                "descripcion": "Diseñar patrón de marcha cuadrúpeda básico: alternar diagonal (pata delantera derecha + trasera izquierda, luego inverso). Programar ciclo de caminata: levantar par diagonal → avanzar hacia adelante → apoyar → cambiar a otro par diagonal. Implementar 8-12 pasos discretos por ciclo completo de marcha con pausas de 200-300ms entre pasos. Ajustar amplitud de movimiento: rango angular de 20-30° por paso para equilibrio y estabilidad. Calcular velocidad de desplazamiento esperada: 2-4 cm/segundo. Agregar variación en altura de levantamiento de pata (~1cm) para clearance del suelo."
+            },
+            {
+                "titulo": "5. Sistema de Control y Modos de Operación",
+                "descripcion": "Implementar máquina de estados con tres modos: SENTADO, PARADO, CAMINANDO. Programar transiciones: SENTADO → PARADO (levantarse), PARADO → CAMINANDO (iniciar marcha), CAMINANDO → PARADO (detenerse). Integrar botón físico o comando serial para cambio manual de modos. Agregar LEDs indicadores: LED verde (parado), LED amarillo (caminando), LED apagado (sentado). Implementar secuencia de inicio: al encender, ejecutar rutina de 'despertar' (estiramiento) antes de entrar en modo sentado. Programar tiempo de operación continua máximo de 5 minutos en modo caminar para prevenir sobrecalentamiento de servos."
+            },
+            {
+                "titulo": "6. Sistema Eléctrico y Gestión de Energía",
+                "descripcion": "Diseñar alimentación para 4 servomotores simultáneos: fuente de 5-6V con capacidad mínima de 1A (4 servos × 200-300mA cada uno). Implementar regulador de voltaje o batería de 4xAA (6V) o pack de LiPo 2S (7.4V con regulador a 5V). Conectar línea VCC de todos los servos a fuente común, cada señal PWM a pin digital de Arduino (pines 3, 5, 6, 9). Verificar conexión de tierras común entre Arduino, servos y batería. Agregar capacitor de 470-1000µF en línea de alimentación de servos para suavizar picos de corriente. Calcular autonomía: batería 4xAA (2000mAh) → aproximadamente 90-120 minutos de operación mixta."
+            },
+            {
+                "titulo": "7. Pruebas de Movimiento y Refinamiento",
+                "descripcion": "Realizar pruebas de balance estático: verificar que robot se mantiene parado sin volcarse (3 minutos sin movimiento). Validar transiciones de postura: sentado-parado en <2 segundos, sin oscilaciones excesivas. Probar marcha en superficie plana: robot debe avanzar en línea relativamente recta durante al menos 30cm sin caerse. Documentar casos de inestabilidad: vuelcos, movimientos erráticos, bloqueo de servos. Optimizar ángulos iterativamente hasta lograr marcha estable. Probar en diferentes superficies: madera lisa, cerámica, alfombra de pelo corto. Medir 20 ciclos completos de cada movimiento para validar repetibilidad y confiabilidad."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión de principios de robótica biopédica: cinemática, balance, locomoción",
+                "Experiencia práctica con servomotores: control PWM, torque, calibración angular",
+                "Habilidades de programación de secuencias de movimiento coordinado",
+                "Conocimiento de mecánica básica: palancas, centros de gravedad, estabilidad",
+                "Pensamiento en animación: diseño de movimientos naturales y fluidos",
+                "Metodología iterativa: prototipado, prueba, refinamiento continuo",
+                "Apreciación de la complejidad de la locomoción en seres vivos"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una con objetivos y entregables específicos:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación y Conceptualización",
+                "descripcion": "Se inició estudiando robots cuadrúpedos comerciales (como Sony Aibo, Boston Dynamics Spot en miniatura) y proyectos DIY similares. Se decidió implementar un diseño simplificado de 4 servos (uno por pata) en lugar de 8 o 12 servos, balanceando complejidad con funcionalidad. Se investigaron hallazgos clave sobre patrones de marcha cuadrúpeda, distribución de peso, y cómo los animales mantienen estabilidad durante locomoción."
+            },
+            {
+                "titulo": "Fase 2: Diseño de la Estructura Mecánica",
+                "descripcion": "Se establecieron especificaciones del cuerpo: longitud 18cm, ancho 9cm, altura variable 8-12cm según postura. Se diseñó estructura modular en dos niveles: superior para electrónica (Arduino, batería), inferior para servomotores y patas. Se seleccionó cartón corrugado de 5mm como material principal por su excelente relación resistencia/peso. Se diseñaron patas con dos segmentos articulados: muslo fijo y pierna móvil controlada por servo. Se calculó que el centro de gravedad debía estar entre las 4 patas para estabilidad óptima."
+            },
+            {
+                "titulo": "Fase 3: Construcción del Cuerpo y Patas",
+                "descripcion": "Se cortó y ensambló meticulosamente el cuerpo usando plantillas de cartón. Se montaron 4 servomotores SG90 en posiciones estratégicas: dos delanteros y dos traseros, alineados simétricamente. Se construyeron patas de 6cm de longitud con palitos de helado y pajillas plásticas para rigidez. Se instalaron 'pies' de goma EVA para mejor tracción. Se aplicó decoración estética: se pintó el cuerpo, se agregaron orejas triangulares, ojos adhesivos, y una cola de alambre forrado. El resultado visual simula un perro pequeño de forma caricaturesca."
+            },
+            {
+                "titulo": "Fase 4: Integración Electrónica",
+                "descripcion": "Se conectaron los componentes siguiendo el esquema: Arduino Uno montado en plataforma superior, 4 servomotores conectados a pines PWM (pata delantera izquierda: pin 3, delantera derecha: pin 5, trasera izquierda: pin 6, trasera derecha: pin 9). Pack de 4 pilas AA (6V, 2000mAh) como fuente de alimentación común. Se añadió un capacitor de 1000µF en paralelo con la línea de alimentación de los servos para estabilizar corriente. Se instaló un botón pulsador en pin 2 para cambio manual de modos. LED indicador en pin 13. Se organizó el cableado con bridas pequeñas para evitar enredos."
+            },
+            {
+                "titulo": "Fase 5: Programación de Movimientos",
+                "descripcion": "Se implementó código Arduino con biblioteca Servo.h. Se definieron tres posturas como arrays: sentado [90, 90, 90, 90], parado [45, 45, 45, 45], y preparado [40, 50, 50, 40]. Se programó función transición_suave() que interpola gradualmente entre posturas con incrementos de 2° cada 30ms. Se desarrolló la secuencia de marcha con 8 pasos por ciclo: alternar levantamiento y avance de pares diagonales de patas. Se incluyó máquina de estados (SENTADO, PARADO, CAMINANDO) controlada por botón. Se agregó comunicación serial para debug en tiempo real."
+            },
+            {
+                "titulo": "Fase 6: Calibración de Ángulos",
+                "descripcion": "Se realizaron ajustes iterativos cruciales: calibración de ángulo neutral de cada servo para que el robot quede perfectamente nivelado (servos delanteros: 48°, traseros: 42° debido a ligera diferencia mecánica). Se optimizó amplitud de marcha: rango de 25° por paso (de 30° a 55°) para balance entre velocidad y estabilidad. Se ajustó timing entre pasos: 250ms de pausa entre cambios para dar tiempo a que servos alcancen posición. Se refinó secuencia de levantarse: transición gradual de sentado (90°) a parado (45°) en 1.5 segundos."
+            },
+            {
+                "titulo": "Fase 7: Pruebas y Validación",
+                "descripcion": "Se validó el robot en múltiples escenarios: balance estático (se mantiene parado por 5+ minutos sin caerse), transiciones fluidas entre posturas (éxito en 95% de intentos), marcha en línea recta (avanza 50cm con desviación menor a 10cm). Se documentaron desafíos superados: vuelcos iniciales (corregidos ajustando centro de gravedad), movimientos espasmódicos (solucionados con capacitor y transiciones graduales), desgaste de pies (resuelto cambiando material). Se logró velocidad de marcha de 3 cm/s, equivalente a 1.8 metros por minuto."
+            }
+        ],
+        "documentacion": "Todo el proceso fue documentado exhaustivamente con diagramas de construcción del cuerpo, esquemas de conexión eléctrica, código completo comentado con explicaciones de cada secuencia, tablas de ángulos calibrados, videos de cada modo de operación, y guía ilustrada paso a paso para replicación."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó exitosamente con una mascota robótica completamente funcional que ejecuta movimientos coordinados y capta la atención con su comportamiento similar al de animales reales.",
+        "especificaciones_finales": {
+            "descripcion": "Especificaciones técnicas de la mascota robótica terminada:",
+            "specs": [
+                "Dimensiones: 18cm largo × 9cm ancho × variable de 8cm (sentado) a 12cm (parado)",
+                "Peso total: 285g (incluyendo baterías)",
+                "Velocidad de marcha: 3 cm/s (~1.8 metros/minuto)",
+                "Tiempo de transición sentado-parado: 1.5 segundos",
+                "Autonomía: 90-120 minutos de operación mixta con 4 pilas AA",
+                "Costo total de construcción: $18 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas de movimiento:",
+            "metricas": [
+                "Estabilidad en postura parada: 98% (se mantiene sin caer durante períodos prolongados)",
+                "Éxito en transiciones de postura: 95% (cambios fluidos entre sentado y parado)",
+                "Capacidad de marcha en línea recta: 85% (desviación menor a 15cm en distancia de 50cm)",
+                "Rendimiento en diferentes superficies: excelente en madera y cerámica, limitado en alfombra gruesa",
+                "Limitación identificada: no puede superar obstáculos mayores a 0.5cm de altura, marcha más lenta de lo esperado"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $18 USD, la mascota robótica es notablemente económica comparada con juguetes robóticos comerciales similares ($40-$200). El valor educativo de construir desde cero y programar cada movimiento es incalculable, proporcionando comprensión profunda de mecánica y control.",
+                "Desglose de costos: Arduino Uno ($8), 4 servomotores SG90 ($8 = $2 cada uno), materiales de estructura (cartón, palitos, pajillas) ($1), batería y portapilas ($0 reutilizado), decoraciones y accesorios ($1)."
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un impacto significativo en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: programación de servomotores, comprensión de cinemática básica, habilidades de construcción con precisión",
+                "Transversales: pensamiento en sistemas coordinados, paciencia para calibración iterativa, resolución creativa de problemas mecánicos",
+                "Actitudinales: apreciación de la complejidad del movimiento animal, perseverancia ante inestabilidades iniciales, atención al detalle"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica, la mascota robótica fue una de las atracciones más populares, especialmente entre estudiantes más jóvenes. Se realizaron 100+ demostraciones de las diferentes posturas y secuencia de caminata. El aspecto 'animado' y personalizado del robot generó conexión emocional con los espectadores.",
+                "El proyecto recibió reconocimiento especial por 'Mejor Integración Mecánico-Electrónica' por parte del jurado, destacando la coordinación precisa entre diseño físico y programación de movimientos para lograr locomoción funcional."
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "El balance es crítico: distribución de peso determina si el robot camina o se cae",
+                "Los movimientos graduales son esenciales: transiciones bruscas causan inestabilidad y sacudidas",
+                "La simplicidad tiene límites: 4 servos permite movimientos básicos pero limita capacidades avanzadas",
+                "La calibración es un arte: pequeñas diferencias angulares (2-3°) transforman resultados dramáticamente",
+                "Los seres vivos son maravillas de ingeniería: apreciar la complejidad de locomoción animal real"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (7/7 objetivos logrados)",
+                "Tiempo de desarrollo: 7 semanas (dentro del plazo de 9 semanas)",
+                "Presupuesto: $18 / $25 asignados (28% bajo presupuesto)",
+                "Tasa de éxito operativo: 93% (movimientos confiables en múltiples pruebas)",
+                "Satisfacción del equipo: 9.7/10 (encuesta post-proyecto)"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo de la mascota robótica interactiva representó una aventura fascinante en el mundo de la robótica biopédica, permitiéndonos experimentar directamente los desafíos de crear sistemas mecánicos que imitan comportamientos de seres vivos.",
+            "Logramos construir un robot completamente funcional con un presupuesto de apenas $18 USD, demostrando que incluso con tecnología simple (4 servomotores y un Arduino) se pueden crear comportamientos complejos y visualmente impactantes cuando se combina diseño mecánico inteligente con programación cuidadosa."
+        ],
+        "logros_principales": [
+            "Mascota robótica funcional capaz de tres posturas distintas y marcha coordinada",
+            "Sistema estable con 95% de éxito en transiciones de movimiento",
+            "Diseño mecánico balanceado que previene vuelcos durante operación",
+            "100+ demostraciones públicas exitosas que capturaron imaginación de visitantes",
+            "Documentación completa que permite replicación y personalización del diseño"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado:",
+            "dimensiones": [
+                "Como introducción a robótica biopédica: experiencia tangible con locomoción artificial",
+                "Como lección sobre biomimética: aprender de la naturaleza para crear tecnología",
+                "Como ejercicio de coordinación: sincronizar múltiples actuadores para comportamiento emergente",
+                "Como plataforma de expresión creativa: diseño personalizable que refleja identidad del equipo",
+                "Como inspiración: demostrar que robots 'vivos' están al alcance de estudiantes de secundaria"
+            ]
+        },
+        "conexion_mundo_real": {
+            "parrafos": [
+                "Nuestra humilde mascota robótica ilustra los mismos principios que robots cuadrúpedos avanzados como Boston Dynamics' Spot, Unitree's robots, o robots de rescate, aunque a escala y complejidad simplificadas.",
+                "Los desafíos que enfrentamos —balance dinámico, coordinación de extremidades, optimización de marcha— son los mismos que ingenieros de robótica abordan en proyectos profesionales, solo que nosotros resolvemos versiones simplificadas con recursos limitados pero valiosas como experiencia de aprendizaje."
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Momentos transformadores de aprendizaje:",
+            "desafios": [
+                "Lograr balance estático: enseñó importancia crítica del centro de gravedad en estructuras físicas",
+                "Coordinar movimiento de 4 patas: reveló complejidad de secuencias temporales sincronizadas",
+                "Prevenir vuelcos durante marcha: desarrolló intuición sobre estabilidad dinámica vs estática",
+                "Calibrar ángulos individuales de servos: ilustró que cada componente tiene características únicas"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro diseño actual: solo 4 servos (uno por pata) limita movimientos complejos, ausencia de sensores (no detecta obstáculos), marcha lenta comparada con animales reales, incapacidad para girar o navegar, y fragilidad ante terrenos irregulares.",
+                "Estas limitaciones no son defectos sino puntos de partida identificados para versiones futuras más sofisticadas del proyecto."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Mascota Robótica v2.0:",
+            "mejoras": [
+                "Más grados de libertad: 8 servos (2 por pata) para movimientos de muslo y rodilla, permitiendo marcha más natural y capacidad de girar",
+                "Percepción sensorial: sensor ultrasónico frontal para detección de obstáculos, sensores táctiles en patas para detectar superficie",
+                "Comportamientos reactivos: detenerse ante obstáculos, 'ladrar' (buzzer) cuando detecta persona cercana, mover cola expresivamente",
+                "Conectividad: módulo Bluetooth para control remoto vía app, permitiendo comandos como 'siéntate', 'camina', 'ven aquí'"
+            ]
+        },
+        "valor_educativo": {
+            "parrafos": [
+                "Como plataforma educativa, este proyecto es excepcional: costo muy accesible (<$20), integración natural de mecánica y electrónica, resultados visualmente impactantes que motivan aprendizaje, y múltiples oportunidades de personalización creativa.",
+                "Integra conceptos de física (palancas, centros de masa, fuerzas), matemáticas (trigonometría para ángulos, secuencias numéricas), biología (anatomía comparada, locomoción animal), y programación (control de actuadores, máquinas de estados), todo de manera tangible y emocionalmente atractiva."
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo:",
+            "aspectos": [
+                "Despertar de intereses: varios miembros consideran carreras en robótica, mecatrónica o diseño de animatronics",
+                "Desarrollo de paciencia: aprender que movimientos fluidos requieren iteración y refinamiento constante",
+                "Habilidades de observación: estudiar cómo se mueven animales reales para replicar comportamientos",
+                "Conexión emocional con creación: el robot se siente como 'mascota' del equipo, generando orgullo y apego"
+            ]
+        },
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares:",
+            "consejos": [
+                "Comiencen con estabilidad: aseguren que el robot se pare antes de intentar caminar",
+                "Usen transiciones graduales: movimientos suaves evitan sacudidas y vuelcos",
+                "Documenten ángulos calibrados: anoten cada valor que funciona para no perder progreso",
+                "Personalicen su mascota: añadan detalles creativos que la hagan única y memorable",
+                "Disfruten el momento 'vive': el primer paso exitoso es emocionante y vale todo el esfuerzo"
+            ]
+        },
+        "reflexion_filosofica": {
+            "parrafos": [
+                "Este proyecto también invitó a reflexión profunda: ¿Qué hace que algo parezca 'vivo'? Nuestra mascota, con solo 4 servomotores y movimientos simples, evoca respuestas emocionales en espectadores que la ven como 'criatura' en lugar de 'máquina'. ¿Dónde está la línea entre animado e inanimado?",
+                "La pregunta nos lleva a apreciar que la 'vida' percibida está más relacionada con movimiento autónomo y comportamiento coherente que con complejidad biológica real, una intuición relevante tanto para entender robótica social como nuestra propia relación con seres vivos."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestros profesores por permitirnos explorar este proyecto poco convencional",
+            "A nuestra institución por acceso a herramientas de construcción y laboratorio",
+            "A nuestras familias por apoyar un proyecto que ocupó la mesa del comedor por semanas",
+            "A la comunidad maker online cuyos tutoriales de robótica cuadrúpeda inspiraron este trabajo"
+        ],
+        "cierre": {
+            "parrafos": [
+                "En conclusión, la Mascota Robótica Interactiva no es tecnología sofisticada comparada con robots industriales o comerciales, pero fue profundamente significativa para nosotros como estudiantes fascinados por la intersección de vida y máquina.",
+                "Aprendimos que dar 'vida' a estructuras inanimadas requiere comprensión de mecánica, precisión en programación, paciencia en calibración, y un toque de creatividad artística para personalidad.",
+                "Este proyecto representa nuestros primeros pasos en el campo emocionante de la robótica biopédica. Nuestra pequeña mascota mecánica ha plantado la semilla de curiosidad sobre cómo crear máquinas que no solo funcionen, sino que se muevan con gracia y propósito. La aventura de crear 'vida' artificial apenas comienza."
+            ]
+        }
+    }
+}

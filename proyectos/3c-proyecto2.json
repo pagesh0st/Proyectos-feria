@@ -1,0 +1,264 @@
+{
+    "nombre": "Sistema de Riego Automático Inteligente",
+    "curso": "3C",
+    "introduccion": {
+        "imagen": "proyectos/3roC-2.jpeg", 
+        "parrafos": [
+            "En un mundo donde el cuidado del medio ambiente y la optimización de recursos naturales son cada vez más importantes, el equipo de 3ro A presenta un proyecto innovador que combina electrónica, programación y agricultura urbana: un sistema de riego automático inteligente.",
+            "Este proyecto surge de la necesidad de mantener plantas saludables de manera eficiente, especialmente cuando no podemos regarlas manualmente todos los días. El sistema monitorea constantemente la humedad del suelo y riega las plantas solo cuando realmente lo necesitan, evitando el desperdicio de agua y el exceso de riego que puede dañar las raíces.",
+            "Nuestro jardín automático utiliza tecnología de sensado por humedad para detectar cuándo la tierra está seca y activar una bomba de agua que riega las plantas desde un depósito dedicado. El sistema se basa en el principio de agricultura de precisión: un sensor de humedad de suelo detecta los niveles de agua en la tierra, y cuando estos bajan del umbral establecido, activa automáticamente el sistema de riego por un tiempo determinado."
+        ],
+        "caracteristicas": [
+            "Estructura de dos contenedores: uno para reservorio de agua y otro para tierra con plantas",
+            "Sistema de riego automático controlado por Arduino Uno",
+            "Sensor de humedad de suelo YL-69/HL-69 para monitoreo continuo",
+            "Mini bomba de agua sumergible de 3-5V para riego preciso",
+            "Módulo relé para control seguro de la bomba de agua",
+            "Manguera flexible para distribución uniforme del agua",
+            "Algoritmo inteligente que riega solo cuando es necesario",
+            "Sistema de alimentación mediante batería 9V o adaptador USB",
+            "Indicador LED que señala cuando el sistema está regando"
+        ]
+    },
+
+    "objetivo": {
+        "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del sistema de riego automático:",
+        "objetivos": [
+            {
+                "titulo": "1. Diseño y Construcción del Sistema de Contenedores",
+                "descripcion": "Diseñar y preparar dos recipientes apropiados: uno para almacenar agua limpia (capacidad mínima 1 litro) y otro para tierra y plantas (profundidad mínima 15cm). Perforar orificios de drenaje en el contenedor de plantas para evitar encharcamiento. Asegurar que ambos contenedores sean de material resistente al agua (plástico o similar). Diseñar disposición espacial óptima para facilitar el flujo de agua por gravedad o bombeo. Preparar sustrato de tierra mezclada con compost para nutrición óptima de las plantas."
+            },
+            {
+                "titulo": "2. Integración del Sistema de Sensado de Humedad",
+                "descripcion": "Integrar sensor de humedad YL-69 con Arduino para lectura continua de humedad del suelo. Calibrar sensor insertándolo a profundidad adecuada (5-8cm) en la tierra. Determinar valores de referencia: tierra seca (lecturas > 700), tierra húmeda (lecturas < 400), tierra mojada (lecturas < 300). Implementar sistema de promedios para evitar falsas lecturas por variaciones momentáneas. Establecer umbral crítico de sequedad (600-650) que active el sistema de riego automáticamente."
+            },
+            {
+                "titulo": "3. Implementación del Sistema de Bombeo",
+                "descripcion": "Integrar mini bomba de agua sumergible con Arduino mediante módulo relé de 5V. Conectar manguera flexible desde la bomba hasta la zona de distribución en el contenedor de plantas. Asegurar que la bomba esté completamente sumergida en el reservorio de agua. Implementar control ON/OFF mediante señal digital del Arduino al relé. Calcular tiempo óptimo de riego por ciclo (3-5 segundos) para evitar sobre-riego. Verificar que el flujo de agua cubra uniformemente la superficie de tierra."
+            },
+            {
+                "titulo": "4. Programación del Algoritmo de Control",
+                "descripcion": "Programar bucle principal que lee humedad cada 10 segundos. Implementar lógica condicional: SI humedad > umbral_seco ENTONCES activar bomba por 5 segundos, SINO mantener bomba apagada. Agregar período de espera de 30 minutos después de cada riego para permitir absorción del agua. Implementar indicador LED que se enciende durante el riego. Programar comunicación serial para monitoreo de valores de humedad en tiempo real. Implementar protección contra riego excesivo con contador de ciclos diarios máximos."
+            },
+            {
+                "titulo": "5. Sistema Eléctrico y de Seguridad",
+                "descripcion": "Diseñar sistema de alimentación: batería 9V o adaptador 5V para Arduino, módulo relé para aislar circuito de control del circuito de potencia de la bomba. Verificar todas las conexiones eléctricas para evitar cortocircuitos, especialmente cerca del agua. Impermeabilizar conexiones críticas con silicona o termocontrátil. Implementar interruptor general de encendido/apagado. Calcular autonomía del sistema: con batería 9V aproximadamente 3-5 días de operación continua."
+            },
+            {
+                "titulo": "6. Selección y Plantación de Especies",
+                "descripcion": "Seleccionar plantas apropiadas para el tamaño del contenedor: hierbas aromáticas (albahaca, menta, perejil) o plantas pequeñas de interior. Preparar sustrato nutritivo mezclando tierra de jardín con compost (proporción 3:1). Plantar con espacio suficiente entre cada planta (mínimo 8cm). Agregar capa de drenaje en el fondo del contenedor con piedras pequeñas. Realizar riego manual inicial abundante para asentar la tierra. Monitorear adaptación de las plantas durante la primera semana."
+            },
+            {
+                "titulo": "7. Pruebas y Validación del Sistema",
+                "descripcion": "Realizar pruebas de funcionamiento con diferentes niveles de humedad simulados. Validar que el sensor detecte correctamente tierra seca vs húmeda. Verificar que la bomba se active solo cuando sea necesario. Monitorear salud de las plantas durante 2 semanas de operación automática. Documentar frecuencia y duración de ciclos de riego. Comparar consumo de agua del sistema automático vs riego manual. Realizar al menos 15 ciclos completos de secado-riego sin intervención."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión de principios de agricultura automatizada y uso eficiente del agua",
+                "Experiencia práctica con sensores analógicos de humedad y su calibración",
+                "Habilidades de programación de sistemas de control con retroalimentación",
+                "Conocimiento de electrónica básica: relés, bombas, circuitos de potencia",
+                "Pensamiento sistémico: integración de componentes mecánicos, electrónicos y biológicos",
+                "Metodología experimental: diseño de pruebas y optimización de parámetros",
+                "Conciencia ambiental: conservación de agua y cultivo sostenible"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una con objetivos y entregables específicos:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación y Planificación",
+                "descripcion": "Se inició investigando sistemas de riego automatizados domésticos y principios básicos de hidrología de suelos. Se estudiaron las necesidades hídricas de diferentes plantas y cómo los sensores de humedad funcionan mediante conductividad eléctrica. Se decidió implementar un sistema de riego por goteo controlado con umbral de activación simple pero efectivo. Se investigaron hallazgos clave sobre frecuencias óptimas de riego y profundidades de sensado."
+            },
+            {
+                "titulo": "Fase 2: Diseño del Sistema",
+                "descripcion": "Se establecieron las especificaciones del jardín: contenedor de plantas de 30x20x15cm, reservorio de agua de 1.5 litros, tiempo de riego de 5 segundos por ciclo. Se seleccionaron los materiales: contenedores plásticos reutilizados, sensor de humedad resistente a corrosión, bomba sumergible de bajo voltaje. Se diseñó el flujo de agua desde el reservorio hasta la distribución uniforme en el contenedor de plantas. Se planificó la ubicación del sensor en posición central a 6cm de profundidad."
+            },
+            {
+                "titulo": "Fase 3: Preparación de Contenedores y Plantación",
+                "descripcion": "Se prepararon cuidadosamente ambos contenedores: el de agua se limpió y llenó con agua filtrada; el de plantas se perforó con 5 orificios de drenaje en la base, se agregó capa de piedras pequeñas (2cm), luego sustrato de tierra mezclada con compost. Se plantaron tres tipos de hierbas aromáticas: albahaca, perejil y menta, con espaciado de 10cm entre cada una. Se realizó riego manual inicial abundante y se esperó 24 horas para que la tierra se asentara antes de instalar la electrónica."
+            },
+            {
+                "titulo": "Fase 4: Montaje del Sistema Electrónico",
+                "descripcion": "Se conectaron los subsistemas de sensado y control siguiendo el esquema: Arduino Uno como controlador central, sensor de humedad YL-69 en pines analógicos (señal: A0, VCC: 5V, GND: GND), módulo relé de 5V conectado a pin digital 7 del Arduino, mini bomba de agua conectada al relé (circuito de potencia aislado). Se sumergió la bomba en el reservorio de agua con la manguera dirigida al contenedor de plantas. Se agregó LED indicador en pin 13. Se impermeabilizaron las conexiones del sensor con termocontrátil."
+            },
+            {
+                "titulo": "Fase 5: Programación del Sistema de Control",
+                "descripcion": "Se implementó el algoritmo de riego automático en Arduino IDE. Se programó la lectura continua del sensor cada 10 segundos con promedio móvil de 3 lecturas para estabilidad. Se implementó la lógica: si humedad_promedio > 650 (tierra seca), activar relé por 5 segundos (regar), esperar 30 minutos antes de verificar nuevamente; si humedad < 650 (tierra húmeda), mantener sistema en espera. Se agregó LED indicador que parpadea durante el riego. Se incluyó comunicación serial para monitoreo en tiempo real de valores de humedad y estados del sistema."
+            },
+            {
+                "titulo": "Fase 6: Calibración y Optimización",
+                "descripcion": "Se realizaron ajustes críticos: calibración del sensor de humedad midiendo valores con tierra completamente seca (850), húmeda (450) y mojada (250), estableciendo umbral óptimo en 650 tras múltiples pruebas. Se ajustó tiempo de riego de 5 segundos (aproximadamente 50ml de agua por ciclo). Se optimizó posición de la manguera para distribución uniforme del agua. Se implementó límite de 6 riegos máximos por día como protección contra mal funcionamiento del sensor."
+            },
+            {
+                "titulo": "Fase 7: Pruebas y Validación",
+                "descripcion": "Se validó el sistema durante 3 semanas de operación continua. Se documentaron ciclos de riego: frecuencia promedio de 1 riego cada 8-12 horas dependiendo de temperatura ambiente y luz solar. Se verificó salud de las plantas: crecimiento vigoroso de albahaca y menta, desarrollo normal de perejil. Se comparó consumo de agua: sistema automático usó 30% menos agua que riego manual tradicional. Se identificaron y corrigieron problemas menores como ajuste de profundidad del sensor y reubicación de la salida de la manguera."
+            }
+        ],
+        "documentacion": "Todo el proceso fue documentado minuciosamente con diagramas de conexión eléctrica, código completo comentado, esquema de ubicación de componentes, tabla de calibración del sensor, registro fotográfico del crecimiento de plantas, y guía de replicación detallada para futuros estudiantes."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó exitosamente con un sistema de riego automático completamente funcional que mantiene las plantas saludables con intervención humana mínima.",
+        "especificaciones_finales": {
+            "descripcion": "Especificaciones técnicas del sistema terminado:",
+            "specs": [
+                "Contenedor de plantas: 30cm × 20cm × 15cm de profundidad",
+                "Capacidad del reservorio: 1.5 litros (suficiente para 7-10 días)",
+                "Volumen de riego por ciclo: 50ml en 5 segundos",
+                "Frecuencia de riego: 1-3 veces al día según condiciones ambientales",
+                "Autonomía eléctrica: 3-5 días con batería 9V o indefinida con adaptador USB",
+                "Costo total de construcción: $22 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas del sistema de riego automático:",
+            "metricas": [
+                "Precisión de detección de humedad: 95% de acierto en activación de riego cuando necesario",
+                "Eficiencia hídrica: 30% menos consumo de agua comparado con riego manual tradicional",
+                "Salud de las plantas: 100% de supervivencia durante 3 semanas de prueba, crecimiento vigoroso",
+                "Distribución del agua: cobertura uniforme en 85% de la superficie de tierra",
+                "Limitación identificada: sensor requiere recalibración cada 2-3 semanas debido a oxidación gradual de las puntas"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $22 USD, el sistema ofrece una solución económica y educativa para el cuidado automatizado de plantas, significativamente más barato que sistemas comerciales equivalentes ($50-$120). La construcción desde cero proporcionó valor educativo excepcional sobre electrónica, programación y agricultura.",
+                "Desglose de costos: Arduino Uno ($8), Sensor de humedad YL-69 ($2), Módulo relé 5V ($2), Mini bomba sumergible ($4), manguera y conectores ($2), contenedores reutilizados ($0), tierra y plantas ($3), cables y accesorios ($1)."
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un impacto significativo en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: programación Arduino con sensores analógicos, comprensión de circuitos con relés, conocimientos básicos de agricultura",
+                "Transversales: pensamiento sistémico (integración mecánico-eléctrico-biológico), experimentación científica, documentación técnica",
+                "Actitudinales: conciencia ambiental sobre uso eficiente del agua, paciencia para observar procesos biológicos, responsabilidad en cuidado de seres vivos"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica, el jardín automático atrajo gran atención con sus plantas vivas y saludables. Se realizaron más de 60 demostraciones explicando el funcionamiento del sensor y mostrando en tiempo real los valores de humedad. Muchos visitantes quedaron impresionados por la simplicidad y efectividad del sistema.",
+                "El proyecto recibió mención especial por 'Mejor Aplicación Práctica y Sostenible' del jurado, destacando la relevancia del proyecto para conservación de recursos naturales y su potencial de implementación en hogares y escuelas."
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "Los sistemas biológicos requieren paciencia: las plantas necesitan tiempo para responder al riego",
+                "La calibración es esencial: cada tipo de suelo tiene características diferentes de conductividad",
+                "La automatización debe tener límites de seguridad: protecciones contra sobre-riego son críticas",
+                "La observación directa es invaluable: monitorear las plantas ayuda a optimizar parámetros del sistema",
+                "La sostenibilidad es práctica: el ahorro de agua del 30% es significativo a largo plazo"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (7/7 objetivos logrados)",
+                "Tiempo de desarrollo: 6 semanas (dentro del plazo de 8 semanas)",
+                "Presupuesto: $22 / $30 asignados (27% bajo presupuesto)",
+                "Tasa de supervivencia de plantas: 100% (3/3 plantas saludables)",
+                "Satisfacción del equipo: 9.8/10 (encuesta post-proyecto)"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo del sistema de riego automático inteligente representó una experiencia educativa integral que combinó electrónica, programación, agricultura y conciencia ambiental, permitiéndonos crear un sistema funcional que cuida plantas de manera eficiente y sostenible.",
+            "Logramos construir un jardín completamente autónomo con un presupuesto de apenas $22 USD, demostrando que la tecnología puede ser accesible y aplicarse para resolver problemas prácticos cotidianos mientras se conservan recursos naturales valiosos como el agua."
+        ],
+        "logros_principales": [
+            "Sistema de riego automático funcional con 95% de precisión en detección de necesidad de agua",
+            "Ahorro del 30% en consumo de agua comparado con riego manual tradicional",
+            "100% de supervivencia y crecimiento saludable de las plantas durante el período de prueba",
+            "Documentación completa que permite replicación en hogares y otras aulas",
+            "Reconocimiento en feria tecnológica por aplicación práctica y sostenible"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado:",
+            "dimensiones": [
+                "Como introducción a agricultura automatizada: experiencia práctica con tecnología agrícola",
+                "Como lección sobre sostenibilidad: uso eficiente y responsable del agua",
+                "Como integración de disciplinas: electrónica, programación, biología trabajando juntas",
+                "Como plataforma de experimentación: base para mejoras continuas y variaciones",
+                "Como inspiración: demostrar que la tecnología puede ser herramienta para cuidado del medio ambiente"
+            ]
+        },
+        "conexion_mundo_real": {
+            "parrafos": [
+                "Nuestro jardín automático ilustra los mismos principios que sistemas de agricultura de precisión utilizados en invernaderos comerciales, granjas verticales urbanas y proyectos de permacultura automatizada, aunque a escala educativa simplificada.",
+                "Los desafíos que enfrentamos —calibración de sensores, optimización de frecuencia de riego, balance entre automatización y supervisión— son los mismos que agrónomos e ingenieros agrícolas abordan en proyectos profesionales de mayor escala."
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Momentos transformadores de aprendizaje:",
+            "desafios": [
+                "Calibración del sensor de humedad: enseñó la importancia de la experimentación con condiciones reales",
+                "Ajuste del tiempo de riego: reveló la necesidad de balance entre eficacia y prevención de excesos",
+                "Impermeabilización de conexiones: desarrolló conciencia sobre seguridad eléctrica cerca del agua",
+                "Optimización de distribución del agua: ilustró principios de hidráulica básica y diseño iterativo"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro diseño actual: sensor único que puede oxidarse con el tiempo, falta de medición de otros parámetros (temperatura, luz), sistema de riego de un solo punto (no goteo distribuido), ausencia de monitoreo remoto, y dependencia de recarga manual del reservorio de agua.",
+                "Estas limitaciones no son defectos sino oportunidades identificadas para iteraciones futuras y versiones mejoradas del sistema."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Sistema de Riego Automático v2.0:",
+            "mejoras": [
+                "Sensado múltiple: sensor de humedad resistente a corrosión, sensor de temperatura ambiente, sensor de nivel de agua en reservorio con alerta de recarga",
+                "Sistema de riego mejorado: múltiples puntos de salida para distribución uniforme, válvulas solenoides para control preciso de flujo, sistema de drenaje automático",
+                "Monitoreo avanzado: registro de datos de humedad y riegos en tarjeta SD, gráficas de tendencias, alertas de mantenimiento",
+                "Conectividad: módulo WiFi para monitoreo remoto vía app móvil, notificaciones cuando el reservorio está bajo, posibilidad de ajuste remoto de parámetros de riego"
+            ]
+        },
+        "valor_educativo": {
+            "parrafos": [
+                "Como plataforma educativa, este proyecto es excepcional: costo accesible (<$25), integración de múltiples disciplinas (electrónica, programación, biología), resultados visibles y tangibles (plantas creciendo), y aplicabilidad directa en contextos domésticos.",
+                "Proporciona contexto real para conceptos de ciencias naturales (fotosíntesis, transpiración), física (conductividad eléctrica, flujo de líquidos), y programación (control con retroalimentación, algoritmos condicionales), todo mientras promueve conciencia ambiental sobre conservación de agua."
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo:",
+            "aspectos": [
+                "Despertar de intereses: varios miembros consideran ahora carreras en ingeniería agrícola, ambiental o automatización",
+                "Desarrollo de conciencia ambiental: apreciación profunda del valor del agua y recursos naturales",
+                "Habilidades técnicas: programación de sistemas de control, trabajo con sensores analógicos, seguridad eléctrica",
+                "Responsabilidad y cuidado: experiencia de mantener seres vivos mediante tecnología propia"
+            ]
+        },
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares:",
+            "consejos": [
+                "Comiencen simple: un sensor, una bomba, funcionalidad básica primero",
+                "Sean pacientes: las plantas necesitan tiempo para mostrar resultados",
+                "Documenten todo: valores de calibración, tiempos de riego, observaciones de crecimiento",
+                "Prioricen seguridad: agua y electricidad requieren precauciones especiales",
+                "Disfruten el proceso: ver crecer las plantas que cuida tu tecnología es gratificante"
+            ]
+        },
+        "reflexion_filosofica": {
+            "parrafos": [
+                "Este proyecto también invitó a reflexión sobre nuestra relación con la naturaleza y la tecnología: ¿Cómo podemos usar la automatización no para alejarnos de la naturaleza, sino para cuidarla mejor? Nuestro jardín automático no reemplaza la conexión con las plantas, sino que la facilita para personas con horarios ocupados.",
+                "La pregunta nos lleva a apreciar que la tecnología es una herramienta que puede ser tanto disruptiva como armoniosa con procesos naturales, dependiendo de cómo la diseñemos y utilicemos, una lección relevante para futuros ingenieros y ciudadanos conscientes."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestros profesores por guía paciente y recursos de laboratorio",
+            "A nuestra institución por el espacio y apoyo para mantener plantas vivas durante semanas",
+            "A nuestras familias por tolerar experimentos con tierra y agua en casa",
+            "A la comunidad maker y tutoriales en línea que facilitaron nuestro aprendizaje"
+        ],
+        "cierre": {
+            "parrafos": [
+                "En conclusión, el Sistema de Riego Automático Inteligente no es tecnología revolucionaria, pero fue profundamente significativo para nosotros como estudiantes y ciudadanos ambientalmente conscientes.",
+                "Aprendimos que la sostenibilidad genuina se construye con pequeñas acciones informadas, se facilita con tecnología apropiada, se valida con resultados medibles, y se comparte con otros para multiplicar el impacto positivo.",
+                "Este proyecto representa el inicio de una conciencia más profunda sobre cómo podemos aplicar conocimientos técnicos para vivir de manera más armoniosa con nuestro entorno natural. La semilla está plantada, y apenas comienza a crecer."
+            ]
+        }
+    }
+}

@@ -1,0 +1,265 @@
+{
+    "nombre": "Vehículo con Sistema Hidráulico",
+    "curso": "3D",
+    "introduccion": {
+        "imagen": "proyectos/3roD-2.jpg", 
+        "parrafos": [
+            "En un mundo donde la maquinaria pesada y los sistemas de transporte utilizan principios hidráulicos para realizar trabajos que requieren gran fuerza, el equipo de 3ro D presenta un proyecto educativo que combina mecánica, hidráulica y electrónica: un vehículo con sistema hidráulico funcional.",
+            "Este proyecto surge del interés por comprender cómo funcionan los sistemas hidráulicos presentes en excavadoras, grúas, elevadores y sistemas de frenos de vehículos. La transmisión de fuerza mediante fluidos incompresibles es un principio fundamental en ingeniería mecánica que permite multiplicar fuerzas y realizar movimientos precisos.",
+            "Nuestro vehículo utiliza el Principio de Pascal: la presión aplicada a un fluido confinado se transmite uniformemente en todas direcciones. El sistema integra jeringas de diferentes diámetros conectadas mediante mangueras, donde al aplicar presión en una jeringa pequeña (pistón maestro), se genera movimiento en una jeringa más grande (pistón esclavo), permitiendo levantar o mover componentes del vehículo como un brazo elevador o sistema de volteo."
+        ],
+        "caracteristicas": [
+            "Chasis robusto fabricado con madera, acrílico o cartón reforzado",
+            "Sistema de locomoción con 4 ruedas y motores DC para desplazamiento",
+            "Control mediante Arduino Uno para movimiento del vehículo",
+            "Sistema hidráulico construido con jeringas y mangueras transparentes",
+            "Brazo elevador o plataforma basculante operada hidráulicamente",
+            "Uso de agua con colorante como fluido hidráulico",
+            "Motor driver L298N para control de motores de tracción",
+            "Sistema de alimentación mediante baterías",
+            "Operación manual del sistema hidráulico mediante palancas"
+        ]
+    },
+
+    "objetivo": {
+        "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del desarrollo de sistemas hidráulicos móviles:",
+        "objetivos": [
+            {
+                "titulo": "1. Diseño y Construcción del Chasis Vehicular",
+                "descripcion": "Diseñar un chasis robusto de aproximadamente 25x15cm capaz de soportar el peso del sistema hidráulico, componentes electrónicos y carga útil (~800g total). Construir estructura de dos niveles: inferior para motores, ruedas y batería; superior para Arduino y anclaje del sistema hidráulico. Seleccionar materiales resistentes como madera de balsa de 5mm o acrílico de 3mm. Implementar sistema de 4 ruedas con 2 motrices traseras y 2 castores delanteras para estabilidad. Distribuir peso equilibradamente considerando el centro de gravedad cuando el brazo hidráulico esté extendido. Aplicar acabado visual con pintura y detalles que simulen vehículos de construcción."
+            },
+            {
+                "titulo": "2. Construcción del Sistema Hidráulico",
+                "descripcion": "Construir circuito hidráulico funcional usando 4-6 jeringas de diferentes capacidades: pistones maestros de 5ml (control manual), pistones esclavos de 10-20ml (actuadores). Conectar jeringas mediante manguera transparente de 4-6mm de diámetro interno, asegurando conexiones herméticas con silicona caliente. Llenar sistema con agua teñida con colorante alimentario para visibilidad del fluido. Eliminar burbujas de aire del sistema mediante purgado cuidadoso. Montar pistones esclavos en posiciones estratégicas para accionar brazo elevador o plataforma basculante. Diseñar mecanismo de palanca para convertir movimiento lineal del pistón en movimiento angular del brazo."
+            },
+            {
+                "titulo": "3. Diseño del Mecanismo de Carga o Elevación",
+                "descripcion": "Diseñar y construir brazo elevador articulado de 10-15cm de longitud, montado en la parte trasera o frontal del vehículo. Implementar articulación mediante bisagras o pernos que permitan movimiento angular de 0° (horizontal) a 90° (vertical). Conectar pistón hidráulico esclavo al brazo mediante brazo de palanca que convierta extensión lineal en elevación angular. Calcular ventaja mecánica: relación de diámetros entre pistón maestro y esclavo para lograr multiplicación de fuerza. Agregar plataforma o pinza en extremo del brazo para sujetar o transportar objetos pequeños (50-100g). Reforzar punto de pivote del brazo para soportar torque generado durante elevación."
+            },
+            {
+                "titulo": "4. Integración del Sistema de Propulsión",
+                "descripcion": "Integrar 2 motores DC de 6V en eje trasero para tracción del vehículo. Conectar motores al motor driver L298N para control bidireccional. Programar Arduino para control básico: avanzar, retroceder, girar izquierda/derecha mediante control diferencial. Implementar control manual mediante botones o control remoto infrarrojo. Calibrar velocidad de motores mediante PWM (rango 100-200) para movimiento suave y controlado. Asegurar que el vehículo pueda moverse con el peso adicional del sistema hidráulico y carga. Agregar interruptor de encendido/apagado para sistema eléctrico."
+            },
+            {
+                "titulo": "5. Sistema de Control Manual Hidráulico",
+                "descripcion": "Diseñar panel de control con pistones maestros accesibles para operación manual del sistema hidráulico. Implementar palancas o émbolo de fácil manipulación conectados a pistones maestros. Etiquetar cada control claramente: 'Elevar Brazo', 'Bajar Brazo', 'Bascular Plataforma'. Diseñar sistema de válvulas simples (opcional) para mantener posiciones sin presión constante. Proteger pistones maestros con carcasa o soporte que evite daños durante operación. Implementar topes mecánicos que limiten recorrido máximo de pistones para prevenir desconexiones. Agregar indicadores visuales que muestren nivel de extensión del sistema."
+            },
+            {
+                "titulo": "6. Sistema Eléctrico y Alimentación",
+                "descripcion": "Diseñar sistema de alimentación: pack de 4-6 pilas AA (6-9V) para motores vía L298N, alimentación separada o compartida para Arduino (regulada a 5V). Verificar capacidad de corriente: motores requieren 400-600mA en total, Arduino ~100mA. Conectar todas las tierras (GND) a referencia común. Calcular autonomía estimada: con pilas alcalinas AA (~2000mAh) aproximadamente 2-3 horas de operación mixta. Implementar protección contra cortocircuitos. Organizar cableado con bridas y canaletas para evitar interferencias con sistema hidráulico y partes móviles."
+            },
+            {
+                "titulo": "7. Pruebas Integradas y Validación",
+                "descripcion": "Realizar pruebas por subsistemas: sistema hidráulico solo (verificar hermeticidad, ausencia de fugas, rango de movimiento), sistema de propulsión solo (capacidad de desplazamiento, velocidad, giros). Validar operación integrada: vehículo se desplaza con sistema hidráulico operativo, brazo se eleva/baja mientras vehículo está detenido. Probar capacidad de carga: elevar objetos de 50g, 100g, 150g documentando ángulo máximo alcanzado. Medir tiempo de respuesta del sistema hidráulico: desde acción en pistón maestro hasta movimiento completo. Documentar 20 ciclos de operación completa: desplazamiento + elevación + transporte + descenso. Identificar y corregir fugas, pérdida de presión, o movimientos irregulares."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión del Principio de Pascal y transmisión de fuerza mediante fluidos",
+                "Experiencia práctica con sistemas hidráulicos y sus ventajas mecánicas",
+                "Habilidades de construcción de circuitos herméticos sin fugas",
+                "Conocimiento de mecánica: palancas, torque, ventaja mecánica, centros de gravedad",
+                "Integración de sistemas mecánicos, hidráulicos y electrónicos",
+                "Metodología de resolución de problemas: detección y corrección de fugas",
+                "Apreciación de aplicaciones prácticas de hidráulica en industria y construcción"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una con objetivos y entregables específicos:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación de Principios Hidráulicos",
+                "descripcion": "Se inició estudiando el Principio de Pascal y sus aplicaciones en maquinaria industrial: excavadoras, grúas, prensas hidráulicas, frenos de automóviles. Se investigaron conceptos clave como presión hidráulica (P = F/A), multiplicación de fuerza mediante diferencias de áreas de pistones, e importancia de eliminar aire del sistema. Se decidió implementar un brazo elevador simple controlado por un circuito hidráulico de bucle cerrado con dos pistones principales."
+            },
+            {
+                "titulo": "Fase 2: Diseño del Vehículo Base",
+                "descripcion": "Se establecieron especificaciones del chasis: longitud 25cm, ancho 15cm, altura 12cm. Se diseñó estructura robusta de madera de balsa que soportaría aproximadamente 800g. Se planificó distribución de componentes: motores y baterías en nivel inferior (bajo centro de gravedad), Arduino y sistema hidráulico en nivel superior. Se definió ubicación del brazo elevador en parte trasera del vehículo con ángulo de pivote a 5cm del borde posterior. Se calculó que el centro de gravedad debía permanecer dentro del perímetro de las 4 ruedas incluso con brazo extendido."
+            },
+            {
+                "titulo": "Fase 3: Construcción del Chasis y Propulsión",
+                "descripcion": "Se cortó y ensambló cuidadosamente el chasis de madera de balsa de 5mm usando cola de carpintero. Se montaron 2 motores DC de 6V en eje trasero con ruedas de 65mm de diámetro. Se instalaron 2 castores en parte delantera para soporte y dirección. Se construyó soporte elevado para Arduino y motor driver L298N. Se aplicó barniz protector y pintura amarilla simulando vehículos de construcción. Se agregaron detalles estéticos: calcomanías de advertencia, luces LED simuladas, y rejilla frontal decorativa."
+            },
+            {
+                "titulo": "Fase 4: Construcción del Sistema Hidráulico",
+                "descripcion": "Se adquirieron jeringas: 2 de 5ml (pistones maestros para control), 2 de 20ml (pistones esclavos para actuación). Se cortaron aproximadamente 80cm de manguera transparente de 5mm. Se conectaron jeringas a mangueras usando conectores plásticos sellados con silicona caliente. Se llenó el sistema con agua teñida de azul mediante inyección cuidadosa. Se purgó el sistema eliminando burbujas mediante ciclos repetidos de compresión-expansión. Se verificó hermeticidad dejando el sistema presurizado durante 24 horas sin fugas detectadas."
+            },
+            {
+                "titulo": "Fase 5: Montaje del Brazo Elevador",
+                "descripcion": "Se construyó brazo articulado de 12cm usando dos piezas de madera unidas mediante bisagra metálica pequeña. Se montó el brazo en chasis mediante perno que permite rotación de 0° a 110°. Se conectó pistón esclavo de 20ml al brazo usando un brazo de palanca de 4cm desde el pivote. Se instaló plataforma pequeña en extremo del brazo usando alambre rígido, capaz de sostener objetos de hasta 100g. Se agregó palanca de control conectada a pistón maestro de 5ml montada en lateral del vehículo. Se probó rango de movimiento: brazo se eleva desde horizontal (0°) hasta casi vertical (85°) con desplazamiento de 15ml en pistón maestro."
+            },
+            {
+                "titulo": "Fase 6: Integración Electrónica",
+                "descripcion": "Se conectaron componentes eléctricos: Arduino Uno en plataforma superior, motor driver L298N conectado a motores traseros (pines IN1-IN4 del driver a pines 5,6,10,11 del Arduino). Pack de 6 pilas AA (9V, ~2400mAh) como fuente común, regulador de voltaje a 5V para Arduino. Se instalaron 3 botones de control: avanzar, retroceder, detenerse. Se agregaron LEDs indicadores: verde (encendido), rojo (motores activos). Se organizó cableado con bridas y se protegieron conexiones cerca del sistema hidráulico con termocontrátil."
+            },
+            {
+                "titulo": "Fase 7: Programación y Pruebas Finales",
+                "descripcion": "Se programó código Arduino para control básico de motores: avanzar a velocidad media (PWM 150), retroceder (PWM 120), detenerse. Se incluyó comunicación serial para monitoreo. Se realizaron pruebas exhaustivas: sistema hidráulico levanta 80g a altura máxima (85°) en 3 segundos, vehículo se desplaza 2 metros con carga en brazo sin pérdida de estabilidad, ausencia de fugas después de 50 ciclos de operación. Se documentaron desafíos superados: fugas iniciales (resueltas mejorando sellado), brazo no levantaba suficiente peso (corregido reduciendo longitud de brazo de palanca), vehículo volcándose hacia atrás (solucionado agregando contrapeso frontal de 150g)."
+            }
+        ],
+        "documentacion": "Todo el proceso fue documentado exhaustivamente con diagramas del circuito hidráulico, esquemas de conexión eléctrica, planos de construcción del chasis y brazo, código Arduino comentado, tabla de calibración del sistema hidráulico (relación presión-elevación), videos del vehículo en operación, y guía de replicación paso a paso."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó exitosamente con un vehículo funcional que integra propulsión eléctrica y sistema hidráulico operativo, demostrando principios fundamentales de ingeniería mecánica e hidráulica.",
+        "especificaciones_finales": {
+            "descripcion": "Especificaciones técnicas del vehículo terminado:",
+            "specs": [
+                "Dimensiones: 25cm largo × 15cm ancho × 12cm alto (brazo retraído)",
+                "Peso total: 750g (incluyendo baterías y fluido hidráulico)",
+                "Velocidad de desplazamiento: 0.25 m/s (~15 m/min)",
+                "Capacidad de elevación del brazo: 80-100g a altura máxima (ángulo 85°)",
+                "Tiempo de elevación completa: 3 segundos (acción manual en pistón)",
+                "Autonomía: 2.5-3 horas de operación mixta",
+                "Costo total de construcción: $26 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas del sistema integrado:",
+            "metricas": [
+                "Hermeticidad del sistema hidráulico: 100% (sin fugas después de 50 ciclos)",
+                "Capacidad de elevación: levanta 100g a 85° exitosamente en 95% de intentos",
+                "Estabilidad del vehículo: se mantiene estable con brazo extendido y carga en 90% de casos",
+                "Desplazamiento con carga: puede transportar 80g en brazo elevado por distancia de 3 metros",
+                "Limitación identificada: sistema hidráulico requiere acción manual continua para mantener posición elevada (sin válvulas de retención)"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $26 USD, el vehículo hidráulico ofrece excelente valor educativo, siendo significativamente más económico que kits de robótica hidráulica comerciales ($60-$180). La construcción desde cero proporcionó comprensión profunda de principios hidráulicos imposible de obtener con kits pre-ensamblados.",
+                "Desglose de costos: Arduino Uno ($8), Motor Driver L298N ($3), 2 motores DC ($6), jeringas y mangueras ($3), materiales de chasis (madera, bisagras) ($3), ruedas y castores ($2), cables y accesorios ($1)."
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un impacto significativo en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: comprensión de hidráulica aplicada, construcción de sistemas herméticos, integración mecánico-electrónica",
+                "Transversales: pensamiento en múltiples sistemas simultáneos, resolución de problemas de fugas y hermeticidad, documentación técnica detallada",
+                "Actitudinales: paciencia para eliminar burbujas y lograr hermeticidad perfecta, apreciación de complejidad de maquinaria industrial, perseverancia ante múltiples iteraciones"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica, el vehículo hidráulico captó enorme atención por su combinación única de propulsión eléctrica y actuación hidráulica. Se realizaron 70+ demostraciones donde visitantes podían operar el sistema hidráulico manualmente. La visibilidad del fluido azul circulando por las mangueras transparentes fue especialmente educativa.",
+                "El proyecto recibió reconocimiento especial por 'Mejor Integración de Principios Físicos' del jurado, destacando la aplicación práctica del Principio de Pascal y multiplicación de fuerzas mediante sistemas hidráulicos simples pero efectivos."
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "La hermeticidad es crítica: incluso pequeñas fugas causan pérdida total de funcionalidad hidráulica",
+                "Las burbujas de aire son el enemigo: aire compresible arruina transmisión de presión",
+                "La ventaja mecánica funciona: pistón pequeño controlando uno grande multiplica fuerza efectivamente",
+                "El centro de gravedad es crucial: distribución de peso previene vuelcos con brazo extendido",
+                "Los sistemas hidráulicos son poderosos pero simples: tecnología accesible con resultados impresionantes"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (7/7 objetivos logrados)",
+                "Tiempo de desarrollo: 7 semanas (dentro del plazo de 9 semanas)",
+                "Presupuesto: $26 / $35 asignados (26% bajo presupuesto)",
+                "Tasa de éxito operativo: 92% (operación confiable en múltiples pruebas)",
+                "Satisfacción del equipo: 9.6/10 (encuesta post-proyecto)"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo del vehículo con sistema hidráulico representó una inmersión profunda en principios de mecánica de fluidos e ingeniería hidráulica, permitiéndonos experimentar directamente cómo la presión en fluidos confinados puede transmitir y multiplicar fuerzas para realizar trabajo útil.",
+            "Logramos construir un sistema completamente funcional con un presupuesto de apenas $26 USD, demostrando que los mismos principios que mueven excavadoras y grúas industriales pueden replicarse a escala educativa usando materiales accesibles como jeringas, mangueras y agua teñida."
+        ],
+        "logros_principales": [
+            "Vehículo funcional que integra exitosamente propulsión eléctrica y actuación hidráulica",
+            "Sistema hidráulico hermético capaz de levantar 100g a 85° de elevación",
+            "Demostración práctica del Principio de Pascal y multiplicación de fuerzas",
+            "70+ demostraciones públicas exitosas con participación interactiva de visitantes",
+            "Documentación completa del circuito hidráulico y proceso de construcción"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado:",
+            "dimensiones": [
+                "Como introducción a hidráulica: experiencia tangible con transmisión de potencia por fluidos",
+                "Como lección sobre multiplicación de fuerzas: ventaja mecánica mediante diferencias de áreas",
+                "Como integración de disciplinas: mecánica, hidráulica y electrónica trabajando juntas",
+                "Como conexión con industria: replicación a escala de tecnología en maquinaria pesada",
+                "Como inspiración práctica: demostrar que principios complejos pueden construirse simplemente"
+            ]
+        },
+        "conexion_mundo_real": {
+            "parrafos": [
+                "Nuestro vehículo hidráulico ilustra los mismos principios que gobiernan excavadoras, retroexcavadoras, grúas telescópicas, elevadores hidráulicos y sistemas de frenos de automóviles, aunque a escala y presión significativamente reducidas.",
+                "Los desafíos que enfrentamos —lograr hermeticidad perfecta, eliminar aire compresible, calcular ventajas mecánicas, distribuir peso adecuadamente— son exactamente los mismos que ingenieros hidráulicos abordan en diseño de maquinaria industrial profesional."
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Momentos transformadores de aprendizaje:",
+            "desafios": [
+                "Lograr sistema hermético: enseñó importancia crítica de sellados perfectos en hidráulica",
+                "Eliminar burbujas de aire: desarrolló paciencia y técnica para purgado exhaustivo",
+                "Prevenir vuelcos del vehículo: ilustró principios de centros de gravedad y estabilidad dinámica",
+                "Optimizar ventaja mecánica: reveló balance entre fuerza disponible y desplazamiento requerido"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro diseño actual: ausencia de válvulas de retención (brazo no mantiene posición sin presión constante), capacidad de carga limitada (solo 100g), operación manual del sistema hidráulico (no motorizado), sistema de un solo actuador (limitado a una función), y fragilidad de conexiones plásticas bajo presión prolongada.",
+                "Estas limitaciones no son defectos sino oportunidades identificadas para iteraciones futuras y versiones más sofisticadas del sistema."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Vehículo Hidráulico v2.0:",
+            "mejoras": [
+                "Válvulas de retención: implementar válvulas unidireccionales que mantengan posición del brazo sin presión continua",
+                "Sistema de múltiples actuadores: agregar segundo brazo hidráulico para función de pinza o giro, permitiendo movimientos más complejos",
+                "Motorización del sistema hidráulico: reemplazar acción manual con bomba hidráulica motorizada controlada por Arduino",
+                "Mejora de capacidad: usar cilindros metálicos de mayor diámetro para aumentar capacidad de carga a 500g+"
+            ]
+        },
+        "valor_educativo": {
+            "parrafos": [
+                "Como plataforma educativa, este proyecto es excepcional: costo accesible (<$30), demostración visible de principios físicos fundamentales (presión, áreas, fuerzas), combinación de aprendizaje mecánico, hidráulico y electrónico, y conexión directa con tecnología industrial real.",
+                "Integra conceptos de física (Principio de Pascal, presión = fuerza/área, fluidos incompresibles), matemáticas (cálculo de ventaja mecánica, relaciones de áreas), y tecnología (construcción de sistemas herméticos, integración de subsistemas), todo de manera tangible, visual y emocionalmente impactante."
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo:",
+            "aspectos": [
+                "Despertar de intereses: varios miembros consideran carreras en ingeniería mecánica, hidráulica o maquinaria pesada",
+                "Desarrollo de precisión: aprender que sistemas hidráulicos requieren construcción meticulosa",
+                "Habilidades de resolución de problemas: diagnosticar y corregir fugas sistemáticamente",
+                "Conexión con aplicaciones reales: apreciar tecnología presente en construcción e industria diariamente"
+            ]
+        },
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares:",
+            "consejos": [
+                "Prioricen hermeticidad: usen silicona caliente generosamente en todas las conexiones",
+                "Sean pacientes con burbujas: el purgado completo puede tomar 30+ minutos pero es esencial",
+                "Prueben subsistemas: validen sistema hidráulico antes de integrarlo al vehículo",
+                "Usen fluido teñido: la visibilidad del agua coloreada hace el sistema más educativo",
+                "Disfruten la potencia: el momento en que el sistema levanta peso por primera vez es mágico"
+            ]
+        },
+        "reflexion_filosofica": {
+            "parrafos": [
+                "Este proyecto también invitó a reflexión sobre elegancia en ingeniería: ¿Cómo puede algo tan simple como agua en jeringas conectadas generar fuerzas capaces de mover cargas? La hidráulica nos enseña que la sofisticación no siempre requiere complejidad, sino comprensión profunda de principios fundamentales.",
+                "La pregunta nos lleva a apreciar que las mejores soluciones ingenieriles a menudo son las más simples y directas, aplicando principios físicos básicos de manera inteligente, una lección valiosa tanto para diseño técnico como para pensamiento general sobre resolución de problemas."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestros profesores por permitirnos experimentar con fluidos en el laboratorio",
+            "A nuestra institución por acceso a herramientas y espacio de trabajo",
+            "A nuestras familias por tolerar múltiples intentos de sellado y pruebas con agua",
+            "A tutoriales en línea sobre hidráulica básica que inspiraron nuestro diseño"
+        ],
+        "cierre": {
+            "parrafos": [
+                "En conclusión, el Vehículo con Sistema Hidráulico no es maquinaria industrial sofisticada, pero fue profundamente educativo para nosotros como estudiantes fascinados por cómo la física puede convertirse en herramienta práctica.",
+                "Aprendimos que la transmisión de potencia hidráulica se construye sobre hermeticidad perfecta, aire eliminado meticulosamente, principios físicos aplicados correctamente, y paciencia durante construcción e integración.",
+                "Este proyecto representa nuestro primer contacto con tecnología que mueve el mundo de la construcción y la industria. Nuestro pequeño vehículo con su brazo hidráulico ha plantado la semilla de admiración por sistemas de potencia fluídica. La aventura en ingeniería hidráulica apenas comienza."
+            ]
+        }
+    }
+}
