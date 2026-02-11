@@ -2,6 +2,8 @@
     "nombre": "Robot Monitor de Pulso Cardíaco BB-8",
     "curso": "3D",
     "introduccion": {
+        "imagen": "proyectos/3roD-1.jpeg", 
+
         "parrafos": [
             "En una era donde la salud digital y el monitoreo personal se han vuelto fundamentales, el equipo de 3ro D presenta un innovador proyecto que fusiona robótica, electrónica médica y tecnología de sensores: un robot autónomo capaz de medir y monitorear el pulso cardíaco del usuario en tiempo real, todo integrado en un diseño inspirado en BB-8, el icónico droide de Star Wars.",
             "Este proyecto surge de la observación de cómo la tecnología wearable y los dispositivos de salud están revolucionando el cuidado preventivo. Sin embargo, estos dispositivos suelen ser costosos y limitados en funcionalidad. Nuestro objetivo fue crear un sistema accesible, educativo y funcional que demuestre los principios de la biomedicina aplicada a la robótica.",

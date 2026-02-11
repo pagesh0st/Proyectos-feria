@@ -91,7 +91,7 @@ function renderizarIntroduccion(contenido) {
     // Imagen de introducción (si existe)
     if (contenido.imagen) {
         html += '<div style="text-align: center; margin-bottom: 25px;">';
-        html += `<img src="${contenido.imagen}" alt="${contenido.imagen_alt || 'Imagen del proyecto'}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">`;
+        html += `<img src="${contenido.imagen}" alt="${contenido.imagen_alt || 'Imagen del proyecto'}" style="max-width: 100%; height: 500px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">`;
         if (contenido.imagen_descripcion) {
             html += `<p style="margin-top: 10px; font-style: italic; color: #666; font-size: 0.9em;">${contenido.imagen_descripcion}</p>`;
         }

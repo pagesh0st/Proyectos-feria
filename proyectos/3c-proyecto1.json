@@ -2,6 +2,8 @@
     "nombre": "Brazo Robótico MeArm",
     "curso": "3C",
     "introduccion": {
+        "imagen": "proyectos/3roC-1.jpeg", 
+
         "parrafos": [
             "En la era de la automatización y la robótica, el equipo de 3ro C presenta un proyecto innovador que combina ingeniería mecánica, electrónica y programación: un brazo robótico basado en el diseño MeArm, construido íntegramente con plywood y pintado en elegante color negro.",
             "Este proyecto nace de la necesidad de entender los principios fundamentales de la robótica de manera práctica y accesible. El MeArm es un diseño de código abierto reconocido mundialmente por su simplicidad y efectividad educativa, permitiendo a los estudiantes comprender conceptos como grados de libertad, servomotores, cinemática inversa y control electrónico.",

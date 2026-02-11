@@ -2,6 +2,7 @@
     "nombre": "Robot Esquiva Obstáculos Autónomo",
     "curso": "3A",
     "introduccion": {
+        "imagen": "proyectos/3roA-1.jpeg", 
         "parrafos": [
             "En un mundo cada vez más automatizado donde la tecnología facilita tareas cotidianas, el equipo de 3ro A presenta un proyecto innovador que combina electrónica, programación y diseño mecánico: un robot esquiva obstáculos autónomo.",
             "Este proyecto surge de la necesidad de comprender los fundamentos de la robótica móvil autónoma, específicamente cómo los robots pueden navegar en entornos desconocidos sin intervención humana. La capacidad de detectar y evitar obstáculos es fundamental en aplicaciones que van desde robots aspiradores hasta vehículos autónomos.",
@@ -18,7 +19,7 @@
             "Autonomía de aproximadamente 45 minutos de operación continua"
         ]
     },
-    
+
     "objetivo": {
         "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del desarrollo robótico:",
         "objetivos": [
