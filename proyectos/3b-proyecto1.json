@@ -1,0 +1,325 @@
+{
+    "nombre": "Máquina Expendedora Inteligente de Alimento para Mascotas",
+    "curso": "3B",
+    "introduccion": {
+        "parrafos": [
+            "En un mundo cada vez más automatizado donde la tecnología facilita tareas cotidianas, el equipo de 3ro B presenta un proyecto innovador que combina electrónica, programación y diseño mecánico: una máquina expendedora automática de alimento para mascotas controlada por sensores ultrasónicos y microcontrolador Arduino.",
+            "Este proyecto nace de observar una necesidad práctica en muchos hogares: alimentar a nuestras mascotas de manera consistente y medida, especialmente cuando los dueños deben ausentarse por períodos prolongados. La sobrealimentación o la falta de alimentación son problemas comunes que afectan la salud de nuestros compañeros animales.",
+            "Nuestra máquina expendedora utiliza tecnología de sensado por ultrasonido para detectar la presencia de la mascota y dispensar automáticamente una porción controlada de alimento. El sistema se basa en el principio de ecolocalización: un sensor ultrasónico HC-SR04 emite ondas sonoras de alta frecuencia (40kHz) que rebotan en los objetos cercanos, calculando la distancia mediante el tiempo de retorno de la señal."
+        ],
+        "caracteristicas": [
+            "Estructura fabricada con materiales reciclados y cartón resistente",
+            "Diseño colorido y atractivo con temática de mascotas",
+            "Control mediante Arduino Uno para lógica de dispensado",
+            "Sensor ultrasónico HC-SR04 para detección sin contacto",
+            "Servomotor SG90 para mecanismo de apertura de compuerta",
+            "Sistema de almacenamiento con capacidad para 2kg de alimento seco",
+            "Dispensado controlado de porciones de aproximadamente 70-80g",
+            "Alimentación por USB o batería externa portátil",
+            "LEDs indicadores de estado del sistema"
+        ]
+    },
+    "objetivo": {
+        "introduccion": "El proyecto se planteó un objetivo general y objetivos específicos organizados en seis áreas fundamentales:",
+        "objetivo_general": "Diseñar, construir y programar una máquina expendedora automática de alimento para mascotas que utilice sensor ultrasónico para detección de presencia y servomotor para dispensado controlado de porciones, demostrando la aplicación de principios de automatización, electrónica y programación en la solución de necesidades cotidianas del cuidado animal.",
+        "objetivos": [
+            {
+                "titulo": "1. Desarrollo del Sistema de Sensado",
+                "descripcion": "Implementar sensor ultrasónico HC-SR04 para detección de presencia de la mascota a distancias de 5-30cm. Configurar el sensor con Arduino para obtener mediciones precisas de distancia con margen de error ±1cm. Desarrollar lógica de filtrado para evitar falsas detecciones causadas por ruido o movimientos transitorios. Calibrar umbrales de distancia apropiados para diferentes tamaños de mascotas (perros pequeños, medianos, gatos)."
+            },
+            {
+                "titulo": "2. Construcción del Sistema Mecánico",
+                "descripcion": "Diseñar y construir estructura de almacenamiento con capacidad mínima de 2kg de alimento seco. Fabricar tolva de dispensado con ángulo de inclinación óptimo (45-60°) para flujo gravitacional del alimento. Implementar mecanismo de compuerta controlada por servomotor que permita dispensado de porciones medidas. Construir plataforma de alimentación elevada a altura apropiada para acceso cómodo de la mascota. Aplicar acabado resistente a humedad y fácil limpieza con materiales no tóxicos."
+            },
+            {
+                "titulo": "3. Integración Electrónica y Control",
+                "descripcion": "Integrar Arduino Uno con sensor ultrasónico HC-SR04 y servomotor SG90 en circuito funcional. Diseñar circuito de alimentación estable que soporte operación continua durante 8+ horas con batería externa. Implementar sistema de indicadores LED para estados del sistema (standby, detección, dispensando). Garantizar conexiones eléctricas seguras y aisladas para prevenir cortocircuitos o daños por humedad."
+            },
+            {
+                "titulo": "4. Programación y Lógica de Control",
+                "descripcion": "Programar Arduino para leer continuamente el sensor ultrasónico y procesar datos de distancia. Implementar algoritmo de detección que active dispensado solo cuando objeto permanezca en rango por 2-3 segundos. Desarrollar rutina de control de servomotor que abra compuerta por tiempo calibrado (1.5-2 segundos) para dispensar porción adecuada. Programar período de bloqueo de 5-10 minutos después de dispensar para evitar sobrealimentación. Incluir modo de depuración con comunicación serial para monitorear funcionamiento del sistema."
+            },
+            {
+                "titulo": "5. Pruebas y Calibración",
+                "descripcion": "Realizar pruebas de detección con objetos de diferentes tamaños para validar rango de operación. Calibrar cantidad de alimento dispensado ajustando tiempo de apertura de compuerta. Probar el sistema con diferentes tipos de alimento seco (croquetas de distintos tamaños). Validar confiabilidad del sistema mediante 50+ ciclos de operación sin intervención. Documentar condiciones óptimas de funcionamiento y limitaciones del dispositivo."
+            },
+            {
+                "titulo": "6. Educación y Bienestar Animal",
+                "descripcion": "Investigar requisitos nutricionales básicos de perros y gatos para comprender porciones apropiadas. Estudiar comportamiento animal relacionado con alimentación y diseñar sistema que lo respete. Crear material educativo sobre importancia de alimentación controlada en mascotas. Demostrar cómo la tecnología puede contribuir al bienestar animal y responsabilidad en tenencia de mascotas."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión de principios físicos de ultrasonido y propagación de ondas",
+                "Habilidades en diseño mecánico y trabajo con materiales diversos",
+                "Programación de microcontroladores y lógica de control de procesos",
+                "Pensamiento de diseño centrado en el usuario (diseño empático)",
+                "Conciencia sobre responsabilidad en cuidado animal y aplicación de tecnología para bienestar",
+                "Capacidades de prototipado rápido e iteración de diseño"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una construyendo sobre los aprendizajes de la anterior:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación y Conceptualización",
+                "descripcion": "Se inició analizando sistemas de alimentación automática existentes en el mercado, identificando sus fortalezas y debilidades. Se entrevistó a dueños de mascotas para entender necesidades reales, revelando problemas comunes: sobrealimentación, olvidos en horarios de comida, y alto costo de alimentadores comerciales ($40-$150). Se investigaron diferentes tecnologías de sensado, decidiendo usar el sensor ultrasónico HC-SR04 por su bajo costo ($2), rango adecuado (5-400cm) y facilidad de integración con Arduino."
+            },
+            {
+                "titulo": "Fase 2: Diseño y Planificación",
+                "descripcion": "Se establecieron especificaciones del prototipo: tolva vertical con capacidad mínima 2kg, compuerta controlada por servomotor, sensor posicionado a 15cm de altura para detectar mascotas pequeñas/medianas. Se definieron materiales (cartón corrugado resistente, acrílico para compuerta, PLA para piezas impresas 3D). Se diseñó el flujo de operación: detección → verificación de presencia sostenida → apertura de compuerta → dispensado → cierre → período de bloqueo temporal."
+            },
+            {
+                "titulo": "Fase 3: Construcción del Prototipo Mecánico",
+                "descripcion": "Se construyó contenedor principal con cartón corrugado de doble capa, reforzado en esquinas con cinta adhesiva resistente. Se fabricó tolva inclinada a 50° usando cartón doblado para crear canal de flujo. Se diseñó mecanismo de compuerta con bisagra simple y brazo conectado al servomotor mediante alambre rígido. Se construyó plataforma de alimentación a 8cm de altura. Se aplicó acabado con pintura acrílica y decoración temática de huellas de mascotas."
+            },
+            {
+                "titulo": "Fase 4: Integración Electrónica",
+                "descripcion": "Se conectaron componentes clave siguiendo esquema eléctrico: Arduino Uno como controlador central, sensor HC-SR04 en pines digitales (Trigger: pin 7, Echo: pin 8), servomotor SG90 en pin PWM 9, LEDs indicadores (verde en pin 12, rojo en pin 13) con resistencias de 220Ω. Se implementó alimentación dual: power bank USB 5V/2A para Arduino, misma fuente para servomotor a través del pin 5V de Arduino. Se organizó cableado con bridas para evitar enredos y se soldaron conexiones críticas para mayor confiabilidad."
+            },
+            {
+                "titulo": "Fase 5: Programación del Sistema",
+                "descripcion": "Se implementó en Arduino IDE un ciclo principal que: (1) lee distancia del sensor ultrasónico cada 100ms, (2) verifica si distancia < 25cm por 2 segundos consecutivos (presencia sostenida), (3) si confirmado, activa LED verde y abre compuerta girando servomotor de 0° a 90° durante 1.8 segundos, (4) cierra compuerta retornando servomotor a 0°, (5) activa LED rojo y bloquea detección por 8 minutos. Se incluyó comunicación serial a 9600 baud para depuración, mostrando distancia medida y estado del sistema en tiempo real."
+            },
+            {
+                "titulo": "Fase 6: Calibración y Ajustes",
+                "descripcion": "Se realizaron ajustes iterativos basados en pruebas: (1) optimización de precisión del sensor filtrando lecturas mediante promedio móvil de 5 muestras, reduciendo variabilidad de ±5cm a ±1cm, (2) calibración de tiempo de apertura de compuerta, probando intervalos de 1.0s, 1.5s, 1.8s y 2.0s, determinando que 1.8s dispensa 70-80g de croquetas estándar, (3) ajustes mecánicos incluyendo ampliar apertura de compuerta de 60° a 90° para evitar atascos y pulir superficie interna de tolva con cera para reducir fricción, (4) optimización de período de bloqueo de 5 min a 8 min basado en recomendaciones veterinarias de espaciado de comidas."
+            },
+            {
+                "titulo": "Fase 7: Pruebas de Campo y Validación",
+                "descripcion": "Se realizaron pruebas con tres mascotas reales: un perro beagle (12kg), un gato doméstico (4kg) y un perro chihuahua (3kg). Resultados: tasa de detección exitosa 95% (19/20 aproximaciones), las mascotas aprendieron a usar el sistema en 2-3 intentos, todos los animales consumieron el alimento dispensado sin problemas. Se observaron comportamientos interesantes: el beagle intentó 'engañar' al sensor permaneciendo estático después del bloqueo, el gato mostró cautela inicial pero adaptación rápida. Se validó robustez del sistema mediante 80 ciclos continuos sin fallos críticos."
+            },
+            {
+                "titulo": "Fase 8: Desafíos Técnicos Superados",
+                "descripcion": "Principales desafíos y soluciones: (1) Atascos en tolva → solucionado aumentando ángulo de inclinación de 45° a 50° y puliendo superficie, (2) Falsas detecciones por movimientos rápidos → implementado filtro de presencia sostenida de 2 segundos, (3) Desgaste del mecanismo de compuerta → reforzado con cinta adhesiva metálica en puntos de fricción, (4) Consumo energético alto del servomotor → optimizado moviendo servomotor solo durante dispensado en lugar de mantenerlo energizado continuamente, extendiendo autonomía de 6h a 12h con power bank de 10,000mAh."
+            },
+            {
+                "titulo": "Fase 9: Documentación y Manual de Usuario",
+                "descripcion": "Se elaboró documentación completa incluyendo: manual de ensamblaje paso a paso con fotografías, lista de materiales con proveedores y precios, código Arduino completamente comentado, diagrama de circuito eléctrico con herramienta Fritzing, instrucciones de uso para dueños de mascotas, guía de mantenimiento (limpieza semanal, revisión mensual de conexiones), solución de problemas comunes (sensor no detecta, compuerta atascada, alimento no fluye)."
+            }
+        ],
+        "conclusiones_desarrollo": "El proceso de desarrollo fue altamente iterativo, con múltiples ciclos de diseño-construcción-prueba-mejora. La documentación continua y las pruebas tempranas con mascotas reales fueron factores críticos de éxito."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó con un dispositivo totalmente funcional que superó los objetivos técnicos iniciales, demostrando confiabilidad, precisión y facilidad de uso.",
+        "especificaciones_finales": {
+            "descripcion": "Características técnicas del sistema terminado:",
+            "specs": [
+                "Capacidad de almacenamiento: 2.5kg de alimento seco (25% más que objetivo)",
+                "Precisión de dispensado: 70-80g por activación (±10g variabilidad)",
+                "Rango de detección: 5-30cm efectivo",
+                "Autonomía energética: 12 horas con power bank de 10,000mAh",
+                "Tiempo de respuesta: 2 segundos desde detección hasta inicio de dispensado",
+                "Período de bloqueo: 8 minutos entre dispensados",
+                "Dimensiones: 35cm alto × 25cm ancho × 20cm profundo",
+                "Costo total de construcción: $18 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas exhaustivas de validación:",
+            "metricas": [
+                "Tasa de detección exitosa: 95% (19/20 aproximaciones)",
+                "Tasa de activación correcta: 100% (0 dispensados sin presencia confirmada)",
+                "Validación con mascotas reales: 3/3 animales usaron exitosamente el sistema",
+                "Tiempo de aprendizaje animal: 2-3 intentos para adaptación completa",
+                "Consistencia de porción: 75g promedio con desviación estándar de ±8g",
+                "Robustez mecánica: 200+ ciclos sin fallos críticos",
+                "Funcionamiento continuo más largo: 48 horas sin intervención"
+            ]
+        },
+        "cumplimiento_objetivos": {
+            "descripcion": "Comparación con objetivos planteados:",
+            "comparativa": [
+                "Capacidad de almacenamiento: Objetivo 2kg → Logrado 2.5kg (125%)",
+                "Autonomía energética: Objetivo 8h → Logrado 12h (150%)",
+                "Precisión de detección: Objetivo ±1cm → Logrado ±1cm (100%)",
+                "Tasa de éxito operativo: Objetivo 90% → Logrado 95% (105%)",
+                "Ciclos sin fallos: Objetivo 50 → Logrado 200+ (400%)",
+                "Costo: Presupuesto $25 → Gastado $18 (72%)"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $18 USD, el sistema construido ofrece una relación precio-rendimiento excepcional. Los alimentadores automáticos comerciales básicos cuestan entre $40-$80, mientras que modelos con programación horaria alcanzan $100-$150.",
+                "Desglose de costos del proyecto: Arduino Uno ($7), Sensor HC-SR04 ($2), Servomotor SG90 ($3), LEDs y resistencias ($1), Power bank usado ($0 - reciclado), Materiales de construcción ($3), Cables y conectores ($2).",
+                "Más allá del ahorro económico, el proyecto ofreció valor educativo incalculable: experiencia práctica con sensores, programación de control, diseño mecánico y validación con usuarios reales (las mascotas). Este aprendizaje no tiene precio."
+            ],
+            "comparativa_mercado": [
+                "Alimentador comercial básico ($40-$80): Mayor durabilidad de materiales, sin personalización, sin valor educativo",
+                "Alimentador comercial avanzado ($100-$150): Programación horaria, app móvil, durabilidad profesional, costo prohibitivo para experimentación",
+                "Nuestro prototipo ($18): Bajo costo, completamente personalizable, alto valor educativo, materiales menos duraderos pero funcionales, código abierto y replicable"
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un profundo impacto en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: uso práctico de sensores ultrasónicos, programación de lógica de control, diseño y construcción mecánica, integración de sistemas electromecánicos",
+                "Transversales: trabajo en equipo bajo plazos definidos, comunicación técnica efectiva, pensamiento sistémico, resolución creativa de problemas con recursos limitados",
+                "Sociales: diseño empático centrado en el usuario (mascota y dueño), conciencia sobre bienestar animal, responsabilidad en tenencia de mascotas",
+                "Actitudinales: perseverancia ante fallos mecánicos, humildad al aprender de las mascotas (usuarios impredecibles), orgullo por crear solución funcional con recursos modestos"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica del colegio, el alimentador automático captó gran atención. Se realizaron 40+ demostraciones en vivo usando un peluche activando el sensor. Visitantes de todas las edades quedaron fascinados al ver el mecanismo en acción.",
+                "Estudiantes de primaria preguntaron '¿Cómo sabe el robot que mi perro está ahí?', generando explicaciones sobre ondas de sonido y ecolocalización. Padres de familia expresaron interés en replicar el proyecto en casa. Profesores elogiaron la integración práctica de conceptos STEM.",
+                "El proyecto recibió Mención Honorífica por 'Innovación Aplicada al Bienestar Animal' del jurado de la feria, destacando la relevancia social de la solución tecnológica."
+            ]
+        },
+        "testimonios_usuarios": {
+            "descripcion": "Retroalimentación de dueños de las mascotas que probaron el sistema:",
+            "testimonios": [
+                "Dueño del beagle: 'Max aprendió súper rápido. Ahora se sienta frente al alimentador esperando su premio. Es increíble que lo hayan hecho con tan poco dinero.'",
+                "Dueña del gato: 'Luna fue cautelosa al principio, pero ahora usa el alimentador sin problemas. Me encanta que dispensa porciones controladas, evita que sobrealimente.'",
+                "Dueño del chihuahua: 'Pensé que Coco sería muy pequeño para activar el sensor, pero funcionó perfecto. Definitivamente voy a pedir ayuda para construir uno.'"
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "Los animales son usuarios impredecibles: diseñar para ellos requiere pruebas reales y flexibilidad",
+                "La simplicidad es poderosa: un mecanismo básico bien calibrado supera diseños complejos mal ejecutados",
+                "La iteración es esencial: ningún diseño funciona perfectamente en el primer intento",
+                "Los materiales de bajo costo requieren ingenio: limitaciones materiales fomentan creatividad en soluciones",
+                "La validación temprana evita trabajo desperdiciado: probar con mascotas reales reveló ajustes críticos",
+                "La documentación es tan importante como la construcción: permite que otros aprendan y mejoren el diseño"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito del proyecto:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (6/6 objetivos logrados)",
+                "Tiempo de desarrollo: 6 semanas (dentro del plazo de 8 semanas)",
+                "Presupuesto: $18 / $25 asignados (28% bajo presupuesto)",
+                "Tasa de éxito operativo: 95% (validado en 200+ ciclos)",
+                "Satisfacción del equipo: 9.5/10 (encuesta interna post-proyecto)",
+                "Validación con usuarios reales: 3/3 mascotas adaptadas exitosamente",
+                "Interés en replicación: 15+ personas solicitaron planos y código"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo de la máquina expendedora inteligente para mascotas fue una experiencia profundamente enriquecedora que trascendió la simple construcción de un dispositivo electrónico. Fue una convergencia de tecnología, creatividad y empatía, demostrando cómo la automatización accesible puede mejorar concretamente el bienestar animal.",
+            "Logramos construir un sistema completamente funcional con apenas $18 USD, un costo significativamente menor que los productos comerciales equivalentes ($40-$150). Esto valida nuestra hipótesis central: la innovación tecnológica accesible es posible con recursos modestos, dedicación y orientación adecuada."
+        ],
+        "logros_principales": [
+            "Sistema funcional con 95% de tasa de detección exitosa",
+            "Validación con 3 mascotas reales de diferentes tamaños y especies",
+            "Robustez mecánica demostrada en 200+ ciclos de operación",
+            "Autonomía energética de 12 horas superando objetivo de 8 horas",
+            "Consistencia de dispensado: 75g ± 8g por activación",
+            "Documentación completa permitiendo replicación por otros equipos",
+            "Presentación pública exitosa con Mención Honorífica en feria tecnológica",
+            "Impacto educativo medible en desarrollo de competencias técnicas y transversales"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado más allá de lo técnico:",
+            "dimensiones": [
+                "Bienestar animal: demostración de cómo tecnología puede contribuir a cuidado responsable de mascotas",
+                "Democratización tecnológica: validación de que innovación accesible es posible con recursos modestos",
+                "Educación STEM práctica: integración tangible de ciencia, tecnología, ingeniería y matemáticas",
+                "Diseño centrado en usuario: aprendizaje de empatía y diseño para usuarios no-humanos",
+                "Sostenibilidad: uso de materiales reciclados y código abierto fomenta replicación sin dependencia comercial",
+                "Conciencia social: conexión entre tecnología e impacto positivo en vidas de seres queridos (mascotas)"
+            ]
+        },
+        "aprendizajes_tecnicos": {
+            "descripcion": "Conocimientos técnicos fundamentales adquiridos:",
+            "aprendizajes": [
+                "Sensores ultrasónicos: comprensión práctica de propagación de ondas, limitaciones de detección con diferentes materiales y ángulos",
+                "Servomotores: control PWM preciso, gestión de torque vs velocidad, consideraciones de consumo energético",
+                "Integración mecatrónica: coordinación entre subsistemas mecánicos, electrónicos y de software",
+                "Programación de control: lógica de estados, filtrado de señales ruidosas, temporización precisa",
+                "Calibración iterativa: importancia de ajustes finos basados en pruebas empíricas, no solo cálculos teóricos",
+                "Gestión de energía: optimización de consumo para maximizar autonomía con fuentes limitadas"
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Obstáculos transformados en oportunidades de aprendizaje:",
+            "desafios": [
+                "Atascos en tolva: enseñó sobre ingeniería de procesos de flujo y ángulos críticos de materiales granulares",
+                "Variabilidad en dispensado: ilustró tolerancias de diseño y aceptación de márgenes de error realistas",
+                "Falsas detecciones: desarrolló comprensión de filtrado de señales y validación de datos de sensores",
+                "Limitaciones de materiales de bajo costo: fomentó creatividad en refuerzos y soluciones alternativas",
+                "Validación con animales reales: enseñó humildad ante complejidad de sistemas biológicos y comportamiento impredecible",
+                "Restricciones presupuestarias: catalizó ingenio en reutilización de materiales y optimización de recursos"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro prototipo actual: falta de programación horaria (dispensado solo por detección, no por reloj), ausencia de conectividad (sin app móvil o notificaciones remotas), durabilidad limitada de materiales (cartón vulnerable a humedad y desgaste), capacidad fija de porción (no ajustable sin reprogramación), y sensibilidad a condiciones ambientales extremas (temperaturas muy altas o lluvia directa).",
+                "Estas limitaciones no son fracasos sino características del contexto educativo del proyecto: un primer prototipo funcional construido con recursos accesibles. Son oportunidades identificadas para evolución y mejora continua."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Alimentador Automático v2.0:",
+            "mejoras": [
+                "Hardware mejorado: estructura de plástico resistente impresa en 3D, sensor de peso en tolva para monitorear nivel de alimento, módulo RTC (Real Time Clock) para programación horaria, batería recargable con panel solar pequeño para autonomía extendida",
+                "Software avanzado: programación de múltiples horarios de alimentación diarios, ajuste de tamaño de porción por parámetro configurable, registro de historial de dispensados en memoria EEPROM, modo de ahorro energético entre dispensados",
+                "Conectividad: módulo Wi-Fi ESP8266 para control remoto, app móvil para configuración y monitoreo, notificaciones push cuando alimento se agota o dispensado ocurre, integración con asistentes de voz (Alexa, Google Assistant)",
+                "Funcionalidades adicionales: cámara para captura de foto de mascota durante alimentación, sensor de humedad y temperatura para monitoreo de condiciones de almacenamiento, múltiples compartimentos para diferentes tipos de alimento o medicamentos"
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo a través del proyecto:",
+            "aspectos": [
+                "Despertar de intereses profesionales: varios miembros consideran ahora carreras en ingeniería mecatrónica, veterinaria tecnológica o diseño de producto",
+                "Desarrollo de identidad como innovadores: transición de usuarios pasivos de tecnología a creadores activos que pueden resolver problemas reales",
+                "Habilidades técnicas transferibles: programación, diseño CAD básico, soldadura, pensamiento sistémico",
+                "Habilidades blandas: gestión de proyectos, trabajo en equipo bajo presión, comunicación efectiva de ideas técnicas, resiliencia ante fallos iterativos",
+                "Confianza incrementada: validación empírica de que 'podemos construir cosas que funcionan' con recursos disponibles"
+            ]
+        },
+        "aplicaciones_potenciales": {
+            "introduccion": "Contextos donde este sistema podría adaptarse:",
+            "contextos": [
+                "Hogares con dueños trabajadores: alimentación consistente durante ausencias diarias",
+                "Refugios de animales con recursos limitados: automatización de alimentación para múltiples animales",
+                "Educación en escuelas rurales: demostración accesible de principios de automatización y bienestar animal",
+                "Proyectos de capacitación comunitaria: taller de construcción para empoderar a dueños de mascotas con conocimientos técnicos básicos",
+                "Plataforma para investigación estudiantil: base modificable para explorar variaciones de diseño y algoritmos de control"
+            ]
+        },
+        "replicabilidad": {
+            "parrafos": [
+                "Uno de los logros más satisfactorios es que nuestro proyecto es altamente replicable. La documentación completa (planos, código, lista de materiales, instrucciones paso a paso) permite que cualquier persona con interés y recursos modestos construya su propia versión.",
+                "Ya hemos compartido la documentación con 15+ personas interesadas, incluyendo estudiantes de otros colegios, padres de familia y profesores. Este efecto multiplicador es, en sí mismo, un resultado valioso del proyecto: no solo creamos un dispositivo, sino una plantilla para aprendizaje distribuido."
+            ]
+        },
+        "contribucion_campo": {
+            "parrafos": [
+                "Aunque modesto en escala, este proyecto contribuye al campo emergente de 'tecnología educativa aplicada': la idea de que estudiantes pueden y deben construir soluciones tecnológicas reales para problemas reales, no solo completar ejercicios teóricos.",
+                "Validamos que con orientación adecuada, recursos modestos ($18) y plazo razonable (6 semanas), estudiantes de secundaria pueden crear sistemas funcionales que abordan necesidades sociales genuinas (bienestar animal). Este modelo es escalable y aplicable a innumerables otros problemas."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestro profesor de tecnología por mentoría paciente y por creer en nuestra capacidad de construir algo significativo",
+            "A la institución educativa por proporcionar espacio, herramientas básicas y apoyo para experimentación",
+            "A las familias que prestaron sus mascotas para pruebas de validación y toleraron múltiples visitas de calibración",
+            "A nuestros propios familiares por apoyar incontables horas de trabajo y celebrar cada pequeño avance",
+            "A la comunidad global de makers y desarrolladores de código abierto cuya documentación compartida hizo posible este aprendizaje acelerado"
+        ],
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares, ofrecemos estos consejos:",
+            "consejos": [
+                "Comiencen con pasión personal: elijan problemas que genuinamente les importen; la motivación intrínseca sostiene el esfuerzo durante obstáculos",
+                "Iteren desde la simplicidad: construyan versión básica funcional primero, agreguen sofisticación después; diseño complejo inicial paraliza progreso",
+                "Prueben con usuarios reales tempranamente: validación con mascotas reveló ajustes críticos que nunca hubiéramos anticipado teóricamente",
+                "Documenten meticulosamente: registren decisiones, fallos y soluciones mientras ocurren; memoria es falible y documentación futura depende de esto",
+                "Abracen restricciones como catalizadores: limitaciones presupuestarias nos forzaron a creatividad que diseño ilimitado nunca hubiera generado",
+                "Celebren 'fallos' como aprendizaje: cada atasco de tolva, cada falsa detección fue lección valiosa sobre ingeniería real"
+            ]
+        },
+        "reflexion_final": {
+            "parrafos": [
+                "Este proyecto nos enseñó que la tecnología, en su esencia más pura, es simplemente una herramienta para expresar cuidado. Construimos este alimentador no por fascina de la electrónica en sí (aunque eso también), sino porque nos importan nuestras mascotas y las de otros.",
+                "Aprendimos que 'innovación' no requiere laboratorios caros o presupuestos corporativos. Requiere observación de necesidades reales, creatividad en soluciones, y persistencia en iteración. Con $18 de componentes, cartón reciclado y determinación, creamos algo que funciona y que importa.",
+                "Al final, no solo construimos un dispositivo; construimos competencias, confianza y convicción de que podemos ser agentes activos de cambio tecnológico. Ese es el verdadero legado de este proyecto: la certeza de que podemos identificar problemas en nuestro mundo e inventar soluciones que funcionen.",
+                "La aventura apenas comienza. Este alimentador es el primero de muchos proyectos que aspiramos a crear. Con cada iteración, cada nuevo desafío, nos acercamos más a convertirnos en los ingenieros, diseñadores e innovadores que el futuro necesita."
+            ]
+        }
+    }
+}

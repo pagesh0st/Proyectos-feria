@@ -1,259 +1,320 @@
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            color: #1a1a1a;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
 
-        header {
-            background-color: #003366;
-            color: #d4af37;
-            padding: 30px 20px;
-            text-align: center;
-        }
+header {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: #d4af37;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
 
-        header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
 
-        header p {
-            font-size: 1.1em;
-            color: #ffffff;
-        }
+header p {
+    font-size: 1.1em;
+    color: #ffffff;
+}
 
-        img {
-            height: 400px;
-        }
+.tab-container {
+    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
 
-        .tab-container {
-            background-color: #ffffff;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.tabs {
+    display: flex;
+    background: linear-gradient(to right, #003366, #004080);
+    overflow-x: auto;
+}
 
-        .tabs {
-            display: flex;
-            background-color: #003366;
-            overflow-x: auto;
-        }
+.tab-button {
+    flex: 1;
+    padding: 18px 20px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-width: 150px;
+}
 
-        .tab-button {
-            flex: 1;
-            padding: 18px 20px;
-            background-color: #003366;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-            white-space: nowrap;
-            min-width: 150px;
-        }
+.tab-button:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
 
-        .tab-button:hover {
-            background-color: #004080;
-        }
+.tab-button.active {
+    background: linear-gradient(135deg, #d4af37 0%, #f4c542 100%);
+    color: #003366;
+    font-weight: bold;
+}
 
-        .tab-button.active {
-            background-color: #d4af37;
-            color: #003366;
-            font-weight: bold;
-        }
+.tab-content {
+    display: none;
+    padding: 40px;
+    background-color: #ffffff;
+    min-height: 500px;
+}
 
-        .tab-content {
-            display: none;
-            padding: 40px;
-            background-color: #ffffff;
-            min-height: 500px;
-        }
+.tab-content.active {
+    display: block;
+}
 
-        .tab-content.active {
-            display: block;
-        }
+.tab-content h2 {
+    color: #003366;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 10px;
+}
 
-        .tab-content h2 {
-            color: #003366;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 3px solid #d4af37;
-            padding-bottom: 10px;
-        }
+.tab-content h3 {
+    color: #004080;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
 
-        .tab-content h3 {
-            color: #004080;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
+.tab-content h4 {
+    color: #003366;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-size: 1.15em;
+    padding-left: 10px;
+    border-left: 3px solid #d4af37;
+}
 
-        .tab-content p {
-            line-height: 1.8;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
+.tab-content p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
 
-        .tab-content ul {
-            margin-left: 30px;
-            margin-bottom: 15px;
-        }
+.tab-content ul {
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
 
-        .tab-content li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
+.tab-content li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
 
-        .highlight {
-            background-color: #f0e6d2;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #d4af37;
-        }
+/* Course tabs */
+.course-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0;
+    flex-wrap: wrap;
+}
 
-        .image-placeholder {
-            width: 100%;
-            height: 300px;
-            background-color: #e8e8e8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            color: #666;
-            font-style: italic;
-        }
+.course-tab-button {
+    padding: 12px 24px;
+    background-color: #f5f5f5;
+    color: #003366;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+}
 
-        /* Pestañas de cursos (secundarias) */
-        .course-tabs {
-            display: flex;
-            gap: 10px;
-            margin: 25px 0;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0;
-            flex-wrap: wrap;
-        }
+.course-tab-button:hover {
+    background-color: #e8e8e8;
+}
 
-        .course-tab-button {
-            padding: 12px 24px;
-            background-color: #f5f5f5;
-            color: #003366;
-            border: none;
-            border-bottom: 3px solid transparent;
-            cursor: pointer;
-            font-size: 0.95em;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
+.course-tab-button.active {
+    background-color: #ffffff;
+    color: #d4af37;
+    border-bottom: 3px solid #d4af37;
+    font-weight: bold;
+}
 
-        .course-tab-button:hover {
-            background-color: #e8e8e8;
-            color: #003366;
-        }
+.course-content {
+    display: none;
+    padding-top: 20px;
+}
 
-        .course-tab-button.active {
-            background-color: #ffffff;
-            color: #d4af37;
-            border-bottom: 3px solid #d4af37;
-            font-weight: bold;
-        }
+.course-content.active {
+    display: block;
+}
 
-        .course-content {
-            display: none;
-            padding-top: 20px;
-        }
+/* Project tabs */
+.project-tabs {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 10px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-        .course-content.active {
-            display: block;
-        }
+.project-tab-button {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
 
-        .course-content h3 {
-            color: #003366;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            padding-left: 15px;
-            border-left: 4px solid #d4af37;
-        }
+.project-tab-button:hover {
+    background: linear-gradient(135deg, #5a6268 0%, #343a40 100%);
+    transform: translateY(-2px);
+}
 
-        footer {
-            background-color: #003366;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 0;
-        }
+.project-tab-button.active {
+    background: linear-gradient(135deg, #d4af37 0%, #f4c542 100%);
+    color: #003366;
+    font-weight: bold;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
 
-        /* Carousel arrows */
-        .carousel-arrow {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #003366;
-            color: #d4af37;
-            border: none;
-            font-size: 3em;
-            padding: 20px 15px;
-            cursor: pointer;
-            z-index: 1000;
-            transition: background-color 0.3s, opacity 0.3s;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-        }
+.project-content {
+    display: none;
+    padding: 25px 15px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
 
-        .carousel-arrow:hover:not(:disabled) {
-            background-color: #d4af37;
-            color: #003366;
-        }
+.project-content.active {
+    display: block;
+}
 
-        .carousel-arrow.left {
-            left: 0;
-        }
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
 
-        .carousel-arrow.right {
-            right: 0;
-        }
+footer {
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
 
-        .carousel-arrow:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+/* Carousel arrows */
+.carousel-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #003366 0%, #004080 100%);
+    color: #d4af37;
+    border: none;
+    font-size: 3em;
+    padding: 20px 15px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
+.carousel-arrow:hover:not(:disabled) {
+    background: linear-gradient(135deg, #d4af37 0%, #f4c542 100%);
+    color: #003366;
+    transform: translateY(-50%) scale(1.1);
+}
 
-            .tab-button {
-                min-width: 100%;
-            }
+.carousel-arrow.left {
+    left: 0;
+    border-radius: 0 12px 12px 0;
+}
 
-            .tab-content {
-                padding: 20px;
-            }
+.carousel-arrow.right {
+    right: 0;
+    border-radius: 12px 0 0 12px;
+}
 
-            .carousel-arrow {
-                font-size: 2em;
-                padding: 15px 10px;
-                height: 80px;
-                width: 50px;
-            }
+.carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
 
-            .course-tabs {
-                gap: 5px;
-            }
+/* Responsive */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
 
-            .course-tab-button {
-                padding: 10px 16px;
-                font-size: 0.9em;
-                flex: 1;
-                min-width: calc(50% - 5px);
-            }
-        }
+    .tab-button {
+        min-width: 100%;
+    }
+
+    .tab-content {
+        padding: 20px;
+    }
+
+    .carousel-arrow {
+        font-size: 2em;
+        padding: 15px 10px;
+        height: 80px;
+        width: 50px;
+    }
+
+    .course-tab-button {
+        padding: 10px 16px;
+        font-size: 0.9em;
+        flex: 1;
+        min-width: calc(50% - 5px);
+    }
+
+    .project-tab-button {
+        min-width: calc(33.333% - 6px);
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 0.95em;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}

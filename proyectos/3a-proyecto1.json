@@ -1,0 +1,262 @@
+{
+    "nombre": "Robot Esquiva Obstáculos Autónomo",
+    "curso": "3A",
+    "introduccion": {
+        "parrafos": [
+            "En un mundo cada vez más automatizado donde la tecnología facilita tareas cotidianas, el equipo de 3ro A presenta un proyecto innovador que combina electrónica, programación y diseño mecánico: un robot esquiva obstáculos autónomo.",
+            "Este proyecto surge de la necesidad de comprender los fundamentos de la robótica móvil autónoma, específicamente cómo los robots pueden navegar en entornos desconocidos sin intervención humana. La capacidad de detectar y evitar obstáculos es fundamental en aplicaciones que van desde robots aspiradores hasta vehículos autónomos.",
+            "Nuestro robot utiliza tecnología de sensado por ultrasonido para detectar obstáculos y tomar decisiones de navegación en tiempo real. El sistema se basa en el principio de ecolocalización: un sensor ultrasónico HC-SR04 emite ondas sonoras de alta frecuencia (40kHz) que rebotan en los objetos cercanos, calculando la distancia mediante el tiempo de retorno de la señal."
+        ],
+        "caracteristicas": [
+            "Chasis robusto fabricado con materiales accesibles y reciclados",
+            "Sistema de locomoción diferencial con 4 ruedas (2 motrices + 2 castores)",
+            "Control mediante Arduino Uno para procesamiento y toma de decisiones",
+            "Sensor ultrasónico HC-SR04 para detección de obstáculos sin contacto",
+            "Motor driver L298N para control bidireccional de motores DC",
+            "Algoritmo reactivo de navegación autónoma con evasión inteligente",
+            "Sistema de alimentación dual: baterías para motores y Arduino",
+            "Autonomía de aproximadamente 45 minutos de operación continua"
+        ]
+    },
+    
+    "objetivo": {
+        "introduccion": "El proyecto se planteó objetivos específicos organizados en siete áreas fundamentales del desarrollo robótico:",
+        "objetivos": [
+            {
+                "titulo": "1. Diseño y Construcción de Plataforma Móvil",
+                "descripcion": "Diseñar un chasis robusto con espacio optimizado para componentes electrónicos, batería y cableado organizado. Implementar sistema de locomoción diferencial con 4 ruedas (2 motrices + 2 de apoyo). Seleccionar motores DC con torque adecuado para mover el peso total del robot (~500g), con distribución equilibrada para evitar vuelcos y mejorar tracción. Construir soporte elevado para sensor ultrasónico en posición frontal optimizada y aplicar acabado visual atractivo."
+            },
+            {
+                "titulo": "2. Integración de Sistema de Percepción",
+                "descripcion": "Integrar sensor ultrasónico HC-SR04 con Arduino para medición de distancias en tiempo real. Calibrar sensor para obtener lecturas precisas en rango operativo de 5-200cm. Determinar altura óptima de montaje (10-15cm) para detectar obstáculos relevantes. Implementar filtrado de lecturas para reducir falsas detecciones y establecer umbral de distancia crítica (20-30cm) que active comportamiento de evasión."
+            },
+            {
+                "titulo": "3. Control de Motores y Locomoción",
+                "descripcion": "Integrar motor driver L298N con Arduino para control bidireccional de 2 motores DC. Implementar control PWM para ajustar velocidad (0-255). Programar funciones básicas: avanzar, retroceder, girar izquierda/derecha, detenerse. Calibrar velocidades de ambos motores para lograr movimiento rectilíneo compensando diferencias entre motores. Ajustar radio y velocidad de giro para maniobras de evasión efectivas."
+            },
+            {
+                "titulo": "4. Programación de Algoritmo de Navegación",
+                "descripcion": "Programar bucle principal de percepción-decisión-acción que ejecute continuamente. Implementar lógica condicional: SI distancia > umbral ENTONCES avanzar, SINO esquivar. Desarrollar comportamiento de evasión: detenerse → retroceder 0.5s → girar 90° → continuar. Programar variación aleatoria en ángulo de giro para evitar ciclos infinitos en esquinas e implementar máquina de estados finitos."
+            },
+            {
+                "titulo": "5. Sistema Eléctrico y Alimentación",
+                "descripcion": "Diseñar sistema de alimentación dual: portapilas 4xAA (6V) para motores vía L298N, y batería 9V o USB para Arduino. Verificar conexión de tierras (GND) para referencia común. Calcular autonomía estimada de ~45 minutos con pilas alcalinas AA e implementar interruptor de encendido/apagado."
+            },
+            {
+                "titulo": "6. Pruebas de Navegación y Validación",
+                "descripcion": "Realizar pruebas en circuito controlado con obstáculos de diferentes tamaños, formas y materiales. Validar detección exitosa y medir tasa de éxito en evasión. Probar navegación en espacios abiertos vs pasillos estrechos. Documentar casos de falla y realizar al menos 20 pruebas de navegación de 2 minutos cada una sin intervención."
+            },
+            {
+                "titulo": "7. Análisis Comparativo y Mejoras",
+                "descripcion": "Comparar rendimiento con diferentes umbrales de distancia (15cm, 20cm, 30cm). Analizar diferencias entre estrategias de evasión (giro fijo vs aleatorio). Identificar limitaciones del sensor único frontal (puntos ciegos laterales). Proponer mejoras para versión 2.0: múltiples sensores, servo para escaneo, odometría. Documentar lecciones aprendidas sobre robótica móvil autónoma."
+            }
+        ],
+        "metas_aprendizaje": {
+            "introduccion": "Más allá de los objetivos técnicos, el equipo busca desarrollar competencias fundamentales:",
+            "competencias": [
+                "Comprensión de principios de robótica móvil: percepción, cognición y acción",
+                "Experiencia práctica con sensores ultrasónicos y sus limitaciones",
+                "Habilidades de programación de sistemas de control en tiempo real",
+                "Conocimiento de electrónica de potencia: motores DC, drivers, gestión de energía",
+                "Pensamiento algorítmico: diseño de comportamientos reactivos",
+                "Metodología experimental: diseño de pruebas, recopilación y análisis de datos",
+                "Apreciación de desafíos de navegación autónoma en sistemas reales"
+            ]
+        }
+    },
+    "desarrollo": {
+        "introduccion": "El proyecto se desarrolló en fases secuenciales, cada una con objetivos y entregables específicos:",
+        "fases": [
+            {
+                "titulo": "Fase 1: Investigación y Conceptualización",
+                "descripcion": "Se inició estudiando robots móviles autónomos y sus enfoques de navegación, decidiendo implementar una arquitectura reactiva pura por su efectividad en tareas básicas. Se investigaron hallazgos clave sobre el rango y precisión de sensores ultrasónicos, las ventajas de la locomoción diferencial, y cómo algoritmos simples pueden generar comportamientos complejos emergentes."
+            },
+            {
+                "titulo": "Fase 2: Diseño de la Plataforma Móvil",
+                "descripcion": "Se establecieron especificaciones del chasis priorizando tamaño compacto (20x15cm), estabilidad y distribución equilibrada del peso. Se definieron materiales (acrílico/MDF de 3mm), configuración del sistema de tracción y ubicación estratégica de componentes. Se diseñó estructura de dos niveles: inferior para motores y batería, superior para electrónica de control."
+            },
+            {
+                "titulo": "Fase 3: Construcción Mecánica",
+                "descripcion": "Se ensambló meticulosamente el chasis en dos niveles, montando motores DC con ruedas de 65mm de diámetro y castores frontales para estabilidad. Se construyó la plataforma superior para Arduino, L298N y sensor ultrasónico. Se organizó el cableado y se aplicó acabado estético con pintura y calcomanías personalizadas del equipo."
+            },
+            {
+                "titulo": "Fase 4: Integración Electrónica",
+                "descripcion": "Se conectaron los subsistemas de sensado, control y actuación siguiendo un esquema específico: Arduino Uno como cerebro central, sensor HC-SR04 en pines digitales (Trigger: pin 9, Echo: pin 10), motor driver L298N conectado a pines PWM (motores: pines 5,6,10,11), y sistema de alimentación dual con tierras comunes. Inicialmente se usaron protoboard y jumpers, posteriormente soldados para robustez."
+            },
+            {
+                "titulo": "Fase 5: Programación del Sistema",
+                "descripcion": "Se implementó un bucle reactivo de percepción-decisión-acción en Arduino IDE. Se programaron funciones de movimiento (avanzar, retroceder, girarIzquierda, girarDerecha, detener) y la lógica principal: medir distancia continuamente, si distancia < 25cm entonces ejecutar secuencia de evasión (detener, retroceder 500ms, girar aleatoriamente 300-600ms, continuar), sino avanzar. Se incluyó comunicación serial para monitoreo en tiempo real."
+            },
+            {
+                "titulo": "Fase 6: Calibración y Ajustes",
+                "descripcion": "Se realizaron ajustes iterativos esenciales: calibración de velocidades asimétricas (motor izquierdo: PWM 180, derecho: PWM 200) para compensar diferencias mecánicas, optimización del umbral de detección a 25cm tras múltiples pruebas, ajuste de tiempos de maniobra (retroceso: 500ms, giro: 300-600ms aleatorio), e implementación de filtrado de lecturas del sensor con promedio móvil para estabilidad."
+            },
+            {
+                "titulo": "Fase 7: Pruebas de Navegación",
+                "descripcion": "Se validó el robot en diversos entornos: habitaciones con muebles, pasillos, laberintos improvisados y espacios abiertos. Se documentaron desafíos superados como desviación gradual en línea recta (corregida con calibración asimétrica), oscilaciones en esquinas (solucionadas con giros aleatorios), y lecturas erráticas del sensor (estabilizadas con filtrado). Se logró tasa de evasión del 92% en obstáculos grandes y 78% en objetos pequeños."
+            }
+        ],
+        "documentacion": "Todo el proceso fue documentado exhaustivamente con esquemas de conexión, código completo comentado, planos del chasis, videos de pruebas, bitácora de calibración y guía de replicación paso a paso para futuros estudiantes."
+    },
+    "resultados": {
+        "introduccion": "El proyecto culminó exitosamente con un robot móvil autónomo completamente funcional que cumplió y superó sus objetivos técnicos.",
+        "especificaciones_finales": {
+            "descripcion": "Especificaciones técnicas del robot terminado:",
+            "specs": [
+                "Dimensiones: 20cm largo × 15cm ancho × 12cm alto",
+                "Peso total: 485g (incluyendo baterías)",
+                "Velocidad de crucero: 0.3 m/s (~18 m/min)",
+                "Rango de detección efectivo: 5-150cm",
+                "Autonomía: 45-60 minutos (650+ metros por carga)",
+                "Costo total de construcción: $28 USD"
+            ]
+        },
+        "pruebas_funcionalidad": {
+            "descripcion": "Resultados de las pruebas de navegación autónoma:",
+            "metricas": [
+                "Tasa de evasión de obstáculos grandes (>10cm): 92% de éxito",
+                "Tasa de evasión de obstáculos pequeños (<10cm): 78% de éxito",
+                "Navegación en laberintos: salida exitosa en 85% de casos mediante exploración aleatoria",
+                "Rendimiento en diferentes superficies: consistente en madera, cerámica y alfombra de pelo corto",
+                "Limitación identificada: dificultad con materiales blandos absorbentes de sonido (cortinas, espuma)"
+            ]
+        },
+        "analisis_costo_beneficio": {
+            "parrafos": [
+                "Con un costo total de $28 USD, el robot ofrece una excelente relación precio-rendimiento en comparación con kits comerciales equivalentes ($80-$150). La construcción desde cero proporcionó un valor educativo incomparable, superando ampliamente el ahorro económico.",
+                "Desglose de costos: Arduino Uno ($8), Sensor HC-SR04 ($2), Motor Driver L298N ($3), 2 motores DC ($6), ruedas y castores ($4), materiales de chasis ($3), cables y accesorios ($2)."
+            ]
+        },
+        "impacto_educativo": {
+            "descripcion": "El proyecto generó un impacto significativo en el desarrollo de competencias:",
+            "competencias_desarrolladas": [
+                "Técnicas: dominio de programación Arduino, comprensión de electrónica de potencia, habilidades de construcción mecánica",
+                "Transversales: pensamiento sistémico, resolución creativa de problemas, trabajo en equipo, comunicación técnica",
+                "Actitudinales: perseverancia ante fallos, curiosidad científica, apreciación de la complejidad de sistemas autónomos"
+            ]
+        },
+        "demostracion_publica": {
+            "parrafos": [
+                "En la feria tecnológica, el robot realizó 80+ demostraciones exitosas ante estudiantes, profesores y familiares. La capacidad de navegar autónomamente captó la atención y generó numerosas preguntas sobre robótica y programación.",
+                "El proyecto recibió reconocimiento especial por 'Mejor Aplicación de Algoritmos' por parte del jurado, destacando la elegancia de la solución reactiva simple pero efectiva."
+            ]
+        },
+        "lecciones_clave": {
+            "descripcion": "Aprendizajes fundamentales del desarrollo:",
+            "lecciones": [
+                "La percepción sensorial es inherentemente difícil: ruido, falsas lecturas y puntos ciegos son inevitables",
+                "Comportamientos simples generan resultados complejos: la navegación emergente surgió de reglas básicas",
+                "La aleatoriedad es estratégica: los giros aleatorios evitaron ciclos infinitos de manera elegante",
+                "La calibración es crítica: pequeños ajustes en velocidades y umbrales transformaron el rendimiento",
+                "Las limitaciones técnicas son oportunidades de aprendizaje profundo sobre trade-offs de ingeniería"
+            ]
+        },
+        "metricas_finales": {
+            "descripcion": "Indicadores cuantitativos de éxito:",
+            "metricas": [
+                "Cumplimiento de objetivos técnicos: 100% (7/7 objetivos logrados)",
+                "Tiempo de desarrollo: 8 semanas (dentro del plazo de 10 semanas)",
+                "Presupuesto: $28 / $35 asignados (20% bajo presupuesto)",
+                "Tasa de éxito operativo: 90% (pruebas sin fallas críticas)",
+                "Satisfacción del equipo: 9.5/10 (encuesta post-proyecto)"
+            ]
+        }
+    },
+    "conclusion": {
+        "parrafos": [
+            "El desarrollo del robot esquiva obstáculos autónomo representó una inmersión profunda en los fundamentos de la robótica móvil, permitiéndonos experimentar directamente los desafíos centrales de percepción, decisión y acción en sistemas autónomos.",
+            "Logramos construir un robot completamente funcional con un presupuesto de apenas $28 USD, demostrando que la simplicidad es una virtud en ingeniería: un algoritmo reactivo de pocas líneas de código generó comportamientos emergentes sofisticados como la exploración efectiva de laberintos sin mapeo explícito."
+        ],
+        "logros_principales": [
+            "Navegación autónoma confiable con tasa de éxito del 92% en evasión de obstáculos",
+            "Sistema completamente funcional dentro de presupuesto y plazo establecidos",
+            "Documentación exhaustiva que permite replicación y mejora del proyecto",
+            "80+ demostraciones públicas exitosas y reconocimiento en feria tecnológica",
+            "Desarrollo integral de competencias técnicas y transversales del equipo"
+        ],
+        "significado_proyecto": {
+            "introduccion": "Este proyecto tuvo múltiples dimensiones de significado:",
+            "dimensiones": [
+                "Como introducción práctica a robótica: experiencia tangible con conceptos fundamentales",
+                "Como lección sobre limitaciones: aprender a trabajar creativamente dentro de restricciones",
+                "Como demostración de emergencia: complejidad surgiendo de reglas simples",
+                "Como plataforma de experimentación: base para exploración continua y mejoras",
+                "Como inspiración: despertar interés en carreras STEM relacionadas con robótica y IA"
+            ]
+        },
+        "conexion_mundo_real": {
+            "parrafos": [
+                "Nuestro humilde robot ilustra los mismos principios que gobiernan robots aspiradores comerciales, vehículos autónomos experimentales y sistemas industriales de navegación, aunque a escala simplificada.",
+                "Los desafíos que enfrentamos —sensores imperfectos, decisiones en tiempo real, trade-offs entre velocidad y seguridad— son los mismos que ingenieros profesionales abordan en robótica avanzada, solo que con herramientas más sofisticadas."
+            ]
+        },
+        "desafios_superados": {
+            "descripcion": "Momentos transformadores de aprendizaje:",
+            "desafios": [
+                "Calibración de motores asimétricos: enseñó paciencia y método experimental riguroso",
+                "Implementación de giros aleatorios: reveló el poder de soluciones probabilísticas elegantes",
+                "Depuración de lecturas erráticas del sensor: desarrolló habilidades de diagnóstico sistemático",
+                "Optimización de umbrales de detección: ilustró la importancia de pruebas iterativas exhaustivas"
+            ]
+        },
+        "limitaciones_reconocidas": {
+            "parrafos": [
+                "Reconocemos las limitaciones inherentes de nuestro diseño actual: visión sensorial limitada (solo frontal), ausencia de memoria o mapeo del entorno, falta de planificación de rutas, vulnerabilidad a ciertos materiales, y sensibilidad a condiciones de iluminación extrema.",
+                "Estas limitaciones no son defectos sino oportunidades identificadas para evolución y mejora continua del sistema."
+            ]
+        },
+        "roadmap_futuro": {
+            "introduccion": "Propuesta para Robot Esquiva Obstáculos v2.0:",
+            "mejoras": [
+                "Percepción mejorada: múltiples sensores ultrasónicos (frontal, laterales), servo para escaneo panorámico, sensores infrarrojos para detección de suelo",
+                "Cognición avanzada: algoritmo de mapeo simple (grid ocupancy), planificación de rutas básica (A* o Dijkstra), memoria de áreas ya exploradas",
+                "Actuación refinada: encoders en ruedas para odometría, motores con mayor torque, suspensión para terrenos irregulares",
+                "Conectividad: módulo Bluetooth para control remoto opcional, transmisión de datos de sensores en tiempo real, posibilidad de actualización remota de algoritmos"
+            ]
+        },
+        "valor_educativo": {
+            "parrafos": [
+                "Como plataforma educativa, este proyecto es excepcional: costo accesible (<$30), complejidad graduada (de circuitos simples a algoritmos de control), modularidad que permite experimentación, y escalabilidad hacia conceptos más avanzados.",
+                "Integra múltiples disciplinas —electrónica, programación, mecánica, matemáticas— de manera tangible y motivadora, proporcionando contexto real para conceptos abstractos de física y computación."
+            ]
+        },
+        "impacto_personal": {
+            "descripcion": "Transformación del equipo:",
+            "aspectos": [
+                "Despertar de intereses profesionales: varios miembros consideran ahora carreras en ingeniería electrónica, robótica o inteligencia artificial",
+                "Desarrollo de identidad como creadores: transición de consumidores pasivos de tecnología a diseñadores activos",
+                "Habilidades técnicas transferibles: programación, pensamiento algorítmico, resolución de problemas complejos",
+                "Habilidades blandas: colaboración, comunicación técnica, perseverancia, gestión de proyectos"
+            ]
+        },
+        "mensaje_estudiantes": {
+            "introduccion": "Para futuros equipos que emprendan proyectos similares:",
+            "consejos": [
+                "Comiencen simple: funcionalidad básica primero, sofisticación después",
+                "Prototipado rápido: fallar temprano y frecuentemente es aprendizaje acelerado",
+                "Documentación continua: registrar decisiones, fallos y soluciones mientras ocurren",
+                "Abracen creatividad: limitaciones presupuestarias impulsan innovación ingeniosa",
+                "Disfruten el proceso: el aprendizaje está en el viaje, no solo en el destino"
+            ]
+        },
+        "reflexion_filosofica": {
+            "parrafos": [
+                "Este proyecto también invitó a reflexión filosófica: ¿Qué constituye verdaderamente 'inteligencia' o 'autonomía'? Nuestro robot, con su algoritmo extremadamente simple, exhibe comportamiento aparentemente inteligente de navegación. ¿Es 'inteligente' en algún sentido significativo?",
+                "La pregunta nos lleva a apreciar que la inteligencia podría ser más sobre efectividad en contexto que sobre complejidad interna, una lección relevante tanto para robótica como para comprensión de cognición biológica."
+            ]
+        },
+        "agradecimientos": [
+            "A nuestros profesores por guía paciente y recursos facilitados",
+            "A nuestra institución por apoyo y espacios de trabajo",
+            "A nuestras familias por tolerar incontables horas de pruebas ruidosas",
+            "A la comunidad global de makers y documentación open-source que hizo posible este aprendizaje"
+        ],
+        "cierre": {
+            "parrafos": [
+                "En conclusión, el Robot Esquiva Obstáculos Autónomo no es revolucionario en términos tecnológicos, pero fue profundamente transformador para nosotros como estudiantes y futuros ingenieros.",
+                "Aprendimos que la autonomía genuina —ya sea en robots o en personas— comienza con determinación, se construye con conocimiento aplicado, se refina con iteración persistente, y se valida con resultados tangibles.",
+                "Este proyecto representa el primer paso de un viaje continuo de aprendizaje, innovación y contribución al fascinante campo de la robótica autónoma. La aventura apenas comienza."
+            ]
+        }
+    }
+}
