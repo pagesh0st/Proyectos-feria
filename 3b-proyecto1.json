@@ -3,7 +3,7 @@
     "curso": "3B",
     "introduccion": {
         "imagen": "proyectos/3roB-1.jpeg", 
-
+        
         "parrafos": [
             "En un mundo cada vez más automatizado donde la tecnología facilita tareas cotidianas, el equipo de 3ro B presenta un proyecto innovador que combina electrónica, programación y diseño mecánico: una máquina expendedora automática de alimento para mascotas controlada por sensores ultrasónicos y microcontrolador Arduino.",
             "Este proyecto nace de observar una necesidad práctica en muchos hogares: alimentar a nuestras mascotas de manera consistente y medida, especialmente cuando los dueños deben ausentarse por períodos prolongados. La sobrealimentación o la falta de alimentación son problemas comunes que afectan la salud de nuestros compañeros animales.",
